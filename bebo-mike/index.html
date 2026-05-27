@@ -156,6 +156,11 @@
     .header { flex-wrap: wrap; }
     .kpi-grid { grid-template-columns: 1fr 1fr; }
   }
+
+  /* EMAIL MARKETING BADGES */
+  .email-clicked { background: #DCFCE7; color: #15803D; }
+  .email-unsub { background: #FEE2E2; color: #991B1B; }
+  .email-replied { background: #DBEAFE; color: #1D4ED8; }
 </style>
 </head>
 <body>
@@ -404,6 +409,83 @@
   <div class="disclaimer">
     <strong>⚠️ Nota Importante — Disclaimer</strong>
     Las llamadas telefónicas directas NO están reflejadas en este reporte. El análisis se basa exclusivamente en los registros del CRM. La actividad real de contacto puede ser mayor a lo que muestran los "Días de Seguimiento" registrados. Se recomienda complementar este reporte con los registros de llamadas del equipo de ventas para obtener una imagen completa.
+  </div>
+
+  <!-- EMAIL MARKETING -->
+  <div class="section-title">Campaña de Email Marketing</div>
+
+  <div class="kpi-grid" style="margin-bottom:32px;">
+    <div class="kpi-card">
+      <div class="kpi-label">Enviados</div>
+      <div class="kpi-value">4,686</div>
+      <div class="kpi-sub">Contactos alcanzados</div>
+    </div>
+    <div class="kpi-card blue">
+      <div class="kpi-label">Abiertos</div>
+      <div class="kpi-value" style="color:#2563EB">1,859</div>
+      <div class="kpi-sub">39.7% open rate</div>
+    </div>
+    <div class="kpi-card green">
+      <div class="kpi-label">Clicks</div>
+      <div class="kpi-value" style="color:#15803D">262</div>
+      <div class="kpi-sub">5.6% click rate</div>
+    </div>
+    <div class="kpi-card" style="border-top-color:#6D28D9;">
+      <div class="kpi-label">Click-to-Open</div>
+      <div class="kpi-value" style="color:#6D28D9">14.1%</div>
+      <div class="kpi-sub">De abiertos que hicieron clic</div>
+    </div>
+    <div class="kpi-card amber">
+      <div class="kpi-label">Rebotes Duros</div>
+      <div class="kpi-value" style="color:#D97706">128</div>
+      <div class="kpi-sub">Emails no entregados</div>
+    </div>
+    <div class="kpi-card gray">
+      <div class="kpi-label">Desuscritos</div>
+      <div class="kpi-value" style="color:#6B7280">5</div>
+      <div class="kpi-sub">Removidos de la lista</div>
+    </div>
+  </div>
+
+  <div class="charts-grid" style="margin-bottom:40px;">
+    <div class="chart-card">
+      <div class="chart-title">Embudo de Engagement</div>
+      <div class="chart-wrap">
+        <canvas id="chartEmailFunnel"></canvas>
+      </div>
+    </div>
+    <div class="chart-card">
+      <div class="chart-title">Actividad de Clics por Día (Abr 24 – May 27)</div>
+      <div class="chart-wrap tall">
+        <canvas id="chartEmailTimeline"></canvas>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-title">Contactos que Interactuaron con el Email</div>
+  <div class="table-section" style="margin-bottom:40px;">
+    <div class="table-filters" id="emailFilters">
+      <button class="filter-btn active" onclick="filterEmail('all',this)">Todos (209)</button>
+      <button class="filter-btn" onclick="filterEmail('Clicked',this)">Clicked (203)</button>
+      <button class="filter-btn" onclick="filterEmail('Unsubscribed',this)">Desuscritos (5)</button>
+      <button class="filter-btn" onclick="filterEmail('Replied',this)">Respondió (1)</button>
+    </div>
+    <input type="text" class="table-search" id="emailSearch" placeholder="Buscar por nombre o email..." onkeyup="applyEmailFilters()">
+    <div class="table-count" id="emailCount">Mostrando 209 contactos</div>
+    <div class="table-wrap">
+      <table id="emailTable">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Nombre</th>
+            <th>Email</th>
+            <th>Estatus</th>
+            <th>Fecha</th>
+          </tr>
+        </thead>
+        <tbody id="emailTbody"></tbody>
+      </table>
+    </div>
   </div>
 
   <!-- TABLA DE LEADS -->
@@ -728,6 +810,107 @@ new Chart(document.getElementById('chartMesesArea'), {
     }
   }
 });
+
+// ── EMAIL MARKETING ──────────────────────────────────────────────────────────
+
+// Funnel de Engagement
+new Chart(document.getElementById('chartEmailFunnel'), {
+  type: 'bar',
+  data: {
+    labels: ['Enviados', 'Abiertos', 'Clicks'],
+    datasets: [{
+      data: [4686, 1859, 262],
+      backgroundColor: [BLACK, '#2563EB', RED],
+      borderRadius: 6,
+    }]
+  },
+  options: {
+    indexAxis: 'y',
+    responsive: true, maintainAspectRatio: false,
+    plugins: {
+      legend: { display: false },
+      tooltip: {
+        callbacks: {
+          label: ctx => {
+            const pcts = ['100%', '39.7%', '5.6%'];
+            return ` ${ctx.parsed.x.toLocaleString()} (${pcts[ctx.dataIndex]})`;
+          }
+        }
+      }
+    },
+    scales: {
+      x: { beginAtZero: true, grid: { color: '#F0F0F0' }, ticks: { callback: v => v.toLocaleString() } },
+      y: { grid: { display: false } }
+    }
+  }
+});
+
+// Actividad de Clics por Día
+new Chart(document.getElementById('chartEmailTimeline'), {
+  type: 'line',
+  data: {
+    labels: ['Abr 24','Abr 25','Abr 26','Abr 30','May 01','May 02','May 03','May 04','May 05','May 06','May 07','May 08','May 09','May 10','May 11','May 12','May 13','May 14','May 15','May 16','May 17','May 18','May 19','May 20','May 21','May 22','May 23','May 24','May 25','May 26','May 27'],
+    datasets: [{
+      label: 'Clics',
+      data: [6,6,1,5,7,14,5,22,12,6,16,8,12,1,11,9,6,8,12,8,5,7,12,12,13,8,8,1,6,8,1],
+      borderColor: RED,
+      backgroundColor: 'rgba(204,0,0,0.1)',
+      fill: true, tension: 0.35, borderWidth: 2.5,
+      pointBackgroundColor: RED, pointRadius: 3, pointHoverRadius: 6,
+    }]
+  },
+  options: {
+    responsive: true, maintainAspectRatio: false,
+    plugins: {
+      legend: { display: false },
+      tooltip: { callbacks: { label: ctx => ctx.parsed.y + ' clics' } }
+    },
+    scales: {
+      y: { beginAtZero: true, grid: { color: '#F0F0F0' } },
+      x: { grid: { display: false }, ticks: { font: { size: 10 }, maxRotation: 45, minRotation: 45 } }
+    }
+  }
+});
+
+// Tabla de contactos email
+const emailData = [{"n":"Sandra Santana Ortiz","e":"sandra.santana@mlagencypr.com","s":"Clicked","d":"May 27, 2026 08:24 am"},{"n":"Jasmine Arrieta","e":"jarrieta05@gmail.com","s":"Clicked","d":"May 26, 2026 09:27 pm"},{"n":"Alberto Cruz Alvarado","e":"alcruz241@gmail.com","s":"Clicked","d":"May 26, 2026 03:40 pm"},{"n":"Natalia Ocasio Ramos","e":"natalia.ocasio@upr.edu","s":"Clicked","d":"May 26, 2026 02:20 pm"},{"n":"Annie Fuentes Gomez","e":"anniefuentes@yahoo.com","s":"Clicked","d":"May 26, 2026 11:03 pm"},{"n":"Benjamin Castro","e":"bcastro@indulacpr.com","s":"Clicked","d":"May 25, 2026 12:03 pm"},{"n":"Omar Cotto Andino","e":"ocotto@laconcharesort.com","s":"Clicked","d":"May 25, 2026 10:20 am"},{"n":"Mery Sierra Rolon","e":"meryann.sierra@abbvie.com","s":"Unsubscribed","d":"May 25, 2026 08:13 am"},{"n":"Jose Negron Feliciano","e":"negronj582@gmail.com","s":"Clicked","d":"May 25, 2026 09:45 am"},{"n":"Miranda Carlos","e":"carlosmiranda055@gmail.com","s":"Clicked","d":"May 26, 2026 01:14 am"},{"n":"Javier Batista","e":"jbatista@mendezcopr.com","s":"Clicked","d":"May 25, 2026 08:06 am"},{"n":"Aida Fuentes Lopez","e":"aidafuenteslopez@gmail.com","s":"Clicked","d":"May 26, 2026 10:56 am"},{"n":"Ricardo Cabrera Morales","e":"ricardo.cabrera@wapa-tv.com","s":"Clicked","d":"May 23, 2026 03:40 pm"},{"n":"Maria L Medina Rijos","e":"bmserranomedina@gmail.com","s":"Clicked","d":"May 23, 2026 03:07 pm"},{"n":"Gladys De Leon Bracete","e":"gladysrdeleon@gmail.com","s":"Clicked","d":"May 23, 2026 08:48 pm"},{"n":"Jose Fontanez Medina","e":"lajotasoyo@gmail.com","s":"Clicked","d":"May 24, 2026 12:47 am"},{"n":"Carlos Cid Lugo","e":"denise.cid@upr.edu","s":"Clicked","d":"May 23, 2026 10:20 am"},{"n":"Loren Diaz Ramos","e":"loren.diaz@upr.edu","s":"Clicked","d":"May 23, 2026 08:12 am"},{"n":"Yolette Nieves Tirado","e":"ynievest@gmail.com","s":"Clicked","d":"May 22, 2026 03:51 pm"},{"n":"Carmelo Pantoja Lozada","e":"carmelopantoja11@gmail.com","s":"Clicked","d":"May 22, 2026 04:09 pm"},{"n":"Yohana Colon Rodriguez","e":"yohanacolon2568@gmail.com","s":"Clicked","d":"May 21, 2026 09:42 pm"},{"n":"Cindy Rodriguez","e":"cindywc01@yahoo.com","s":"Clicked","d":"May 23, 2026 09:05 pm"},{"n":"Melizabeth Flores Velez","e":"mfloresddsk6@yahoo.com","s":"Clicked","d":"May 23, 2026 02:42 pm"},{"n":"Angel Santiago Garcia","e":"angel.santiago@holsumpr.com","s":"Clicked","d":"May 21, 2026 02:03 pm"},{"n":"Gretchen Marrero Santiago","e":"gmarrero0123@gmail.com","s":"Clicked","d":"May 22, 2026 08:47 pm"},{"n":"Nelson Perez","e":"lizmeryp@gmail.com","s":"Clicked","d":"May 21, 2026 08:08 pm"},{"n":"Miriam Maldonado Ortiz","e":"jennan1993.jc@gmail.com","s":"Clicked","d":"May 21, 2026 09:33 am"},{"n":"Vidal Otero","e":"vidal.otero@upr.edu","s":"Clicked","d":"May 21, 2026 08:20 am"},{"n":"Eric Pineiro Rodriguez","e":"ericpineiro21350@gmail.com","s":"Clicked","d":"May 21, 2026 11:32 pm"},{"n":"Omayra Galarce Ramos","e":"oagalarce2014@gmail.com","s":"Clicked","d":"May 25, 2026 09:41 am"},{"n":"Carmen G Santiago Matos","e":"brianboty16@gmail.com","s":"Clicked","d":"May 20, 2026 05:44 pm"},{"n":"Melba Rivera","e":"roxytwila@gmail.com","s":"Clicked","d":"May 20, 2026 04:41 pm"},{"n":"Maricarmen Esteves Soldevila","e":"esteves.maricarmen@gmail.com","s":"Clicked","d":"May 21, 2026 09:24 am"},{"n":"Joelyrose Zayas Rivera","e":"joelyrose.zayas@upr.edu","s":"Clicked","d":"May 20, 2026 01:41 pm"},{"n":"Enid Valentin Montanez","e":"valentinenid@yahoo.com","s":"Clicked","d":"May 20, 2026 03:28 pm"},{"n":"Maria Vazquez Santiago","e":"mar_isa_210@yahoo.com","s":"Clicked","d":"May 20, 2026 11:04 am"},{"n":"Lumarie Martinez Colon","e":"lmartin6@claropr.com","s":"Clicked","d":"May 20, 2026 09:43 am"},{"n":"Maribel Colon Velazquez","e":"colon.mary17@gmail.com","s":"Clicked","d":"May 20, 2026 09:45 am"},{"n":"Marisela Hernandez Febus","e":"mariselacb21@gmail.com","s":"Clicked","d":"May 20, 2026 08:51 am"},{"n":"Ramon Cruz","e":"jozuel1338.jc@gmail.com","s":"Clicked","d":"May 19, 2026 06:01 pm"},{"n":"Karen Enid Rosario Borrero","e":"karenrb12@gmail.com","s":"Clicked","d":"May 19, 2026 04:57 pm"},{"n":"Diana Berrios Berrios","e":"dianabbpr@gmail.com","s":"Clicked","d":"May 21, 2026 10:57 am"},{"n":"Dixie M Vazquez Aguayo","e":"dvaz1504@gmail.com","s":"Clicked","d":"May 21, 2026 11:17 am"},{"n":"Daniel Ramos Santiago","e":"brendatoledo11@gmail.com","s":"Clicked","d":"May 20, 2026 04:39 pm"},{"n":"Jaqueline Torres Blanco","e":"jackietb@gmail.com","s":"Clicked","d":"May 19, 2026 05:24 pm"},{"n":"David Martinez","e":"vida1507@yahoo.com","s":"Clicked","d":"May 19, 2026 11:48 am"},{"n":"Orlando Quiles Santana","e":"santanaquilesorlando@gmail.com","s":"Clicked","d":"May 19, 2026 09:24 am"},{"n":"Melanie Ramos","e":"308lanie@gmail.com","s":"Clicked","d":"May 19, 2026 09:38 pm"},{"n":"Joen Morales Morales","e":"lrpadilla0489@gmail.com","s":"Clicked","d":"May 19, 2026 12:26 pm"},{"n":"Dalimary Montalvo Negron","e":"eddiecotto26@gmail.com","s":"Clicked","d":"May 21, 2026 01:00 pm"},{"n":"Julissa Diaz Ramos","e":"julissamdr@icloud.com","s":"Clicked","d":"May 18, 2026 03:00 pm"},{"n":"Maria Diaz Franco","e":"marilolin@yahoo.com","s":"Clicked","d":"May 19, 2026 11:24 am"},{"n":"Joel Maldonado Garcia","e":"joemaldog09@gmail.com","s":"Clicked","d":"May 19, 2026 03:43 pm"},{"n":"Marangely Soto Vazquez","e":"marangelysoto@gmail.com","s":"Clicked","d":"May 26, 2026 01:22 pm"},{"n":"Elimar Diaz Vazquez","e":"elimardiaz06@gmail.com","s":"Clicked","d":"May 21, 2026 07:08 am"},{"n":"Soraima Rivera","e":"soraima_54@yahoo.com","s":"Clicked","d":"May 20, 2026 09:38 pm"},{"n":"Vanessa Rivera Ledesma","e":"vanessariveravko@gmail.com","s":"Clicked","d":"May 17, 2026 09:23 am"},{"n":"Vivienne Ortega Alverio","e":"vivienne4588@gmail.com","s":"Clicked","d":"May 16, 2026 07:23 pm"},{"n":"Popular Auto Universidad Central Del Caribe","e":"ileana.cortes@uccaribe.edu","s":"Clicked","d":"May 16, 2026 04:40 pm"},{"n":"Carlos Santos Rivera","e":"c.j.santos30@gmail.com","s":"Clicked","d":"May 16, 2026 06:24 pm"},{"n":"Yetzalid Ruiz De Jesus","e":"yetzielyelitza@gmail.com","s":"Clicked","d":"May 16, 2026 02:09 pm"},{"n":"Sara Vega Valentin","e":"saracvega@gmail.com","s":"Clicked","d":"May 17, 2026 02:31 pm"},{"n":"Michael Sierra Gomez","e":"aryamsicolon@gmail.com","s":"Clicked","d":"May 22, 2026 06:00 pm"},{"n":"Waleska Mojica Rivera","e":"wale821@hotmail.com","s":"Clicked","d":"May 22, 2026 07:44 am"},{"n":"Carlos Martinez Salgado","e":"cm25278@gmail.com","s":"Clicked","d":"May 20, 2026 08:46 pm"},{"n":"Juana Crespo Rivera","e":"crespoharvey@yahoo.com","s":"Clicked","d":"May 16, 2026 12:42 pm"},{"n":"Vanessa Gonzalez Alvarez","e":"gonzalez.vanessa92@yahoo.com","s":"Clicked","d":"May 15, 2026 11:35 pm"},{"n":"Vimaris Gonzalez Mendez","e":"vimaris.gonzalez.mendez@gmail.com","s":"Clicked","d":"May 18, 2026 12:04 pm"},{"n":"Carmen Ortiz Rivera","e":"carmenortiz.co11@gmail.com","s":"Clicked","d":"May 15, 2026 03:25 pm"},{"n":"Sandra Soto Cordero","e":"se.sotocordero@yahoo.com","s":"Clicked","d":"May 16, 2026 04:34 pm"},{"n":"Brigida Crespo Marrero","e":"frankcrespo1969@gmail.com","s":"Clicked","d":"May 15, 2026 08:49 pm"},{"n":"Samuel Pantoja Bermudez","e":"samuelpantoja178@gmail.com","s":"Clicked","d":"May 15, 2026 06:38 pm"},{"n":"Nicole Clemente Jimenez","e":"nicole_mcj@hotmail.com","s":"Clicked","d":"May 17, 2026 10:47 pm"},{"n":"Jose Juan Rivera Salgado","e":"yariadri15@gmail.com","s":"Clicked","d":"May 15, 2026 11:03 am"},{"n":"Iris Pantoja Martinez","e":"ipantoja0640.ip@gmail.com","s":"Clicked","d":"May 15, 2026 11:39 am"},{"n":"Violeta Gonzalez Perez","e":"violetgonzalez765@gmail.com","s":"Clicked","d":"May 17, 2026 09:14 am"},{"n":"Jonathan Rivera Maimi","e":"jazmincollazo88@gmail.com","s":"Clicked","d":"May 14, 2026 05:23 pm"},{"n":"Julian Maldonado Lopez","e":"julian.gabrielml11@gmail.com","s":"Clicked","d":"May 14, 2026 04:20 pm"},{"n":"Lydieliz Cruz Medina","e":"lydielizcruz@gmail.com","s":"Clicked","d":"May 14, 2026 02:20 pm"},{"n":"Loany Munoz Rodriguez","e":"loanymu81@gmail.com","s":"Clicked","d":"May 19, 2026 11:43 am"},{"n":"Blanca Quintana","e":"blancaevelyn50@gmail.com","s":"Clicked","d":"May 14, 2026 01:53 pm"},{"n":"Alejandro Nouel Peralta","e":"yara.naomy29@gmail.com","s":"Clicked","d":"May 18, 2026 09:02 am"},{"n":"Julio Cardenales Perez","e":"cardenalesperez@gmail.com","s":"Clicked","d":"May 13, 2026 09:37 am"},{"n":"Mariana Pabon Gonzalez","e":"maryannapg13@gmail.com","s":"Clicked","d":"May 12, 2026 04:11 pm"},{"n":"Maritza Rodriguez","e":"mara787.mr@gmail.com","s":"Clicked","d":"May 12, 2026 05:29 pm"},{"n":"Glorimar Rivera Rivera","e":"glorymarmendez2@gmail.com","s":"Clicked","d":"May 12, 2026 03:23 pm"},{"n":"Johan Oyola Garcia","e":"pastriesfromheaven@gmail.com","s":"Clicked","d":"May 15, 2026 04:01 pm"},{"n":"Jonathan Perez Arriaga","e":"gantiertatiana@gmail.com","s":"Clicked","d":"May 12, 2026 02:13 pm"},{"n":"Nydia Vazquez Rodriguez","e":"niky065@gmail.com","s":"Clicked","d":"May 13, 2026 04:31 am"},{"n":"Carlos Rivera Otero","e":"brineilys.castillo@upr.edu","s":"Unsubscribed","d":"May 12, 2026 10:13 am"},{"n":"Maritza Alvarez Vega","e":"jeariana2004@gmail.com","s":"Replied","d":"May 16, 2026 01:34 pm"},{"n":"Sybella Zayas Cordero","e":"szayas800@yahoo.com","s":"Clicked","d":"May 17, 2026 03:40 am"},{"n":"Ramon Sanchez Flores","e":"sanchez.handyman@gmail.com","s":"Clicked","d":"May 13, 2026 09:46 am"},{"n":"Glenda Correa Gonzalez","e":"correaglenda12@gmail.com","s":"Clicked","d":"May 12, 2026 04:06 pm"},{"n":"Ana Negron Santiago","e":"amnegron96@hotmail.com","s":"Clicked","d":"May 11, 2026 09:57 pm"},{"n":"Yajaira Vazquez Aviles","e":"yari881@yahoo.com","s":"Clicked","d":"May 11, 2026 10:49 am"},{"n":"Rolando Santiago","e":"roaldy0512@gmail.com","s":"Clicked","d":"May 15, 2026 09:24 am"},{"n":"Dealer Auto Sales","e":"luisdiazpagan79@gmail.com","s":"Clicked","d":"May 16, 2026 06:30 pm"},{"n":"Linces Cortes Rivera","e":"puccapr2@yahoo.com","s":"Clicked","d":"May 11, 2026 10:53 am"},{"n":"Luis Hernandez Quinones","e":"siulraul@gmail.com","s":"Clicked","d":"May 11, 2026 08:30 pm"},{"n":"Adamaries Garcia Cotto","e":"garcia.adamaries@gmail.com","s":"Clicked","d":"May 11, 2026 09:18 am"},{"n":"Gladys Robles","e":"gladysrh64@gmail.com","s":"Clicked","d":"May 13, 2026 06:23 pm"},{"n":"Ana Rodriguez Santana","e":"rodrigueztaty1965@gmail.com","s":"Clicked","d":"May 11, 2026 08:09 am"},{"n":"Jenny Laureano Landron","e":"jennylaureano@gmail.com","s":"Clicked","d":"May 11, 2026 11:09 am"},{"n":"Iliana Perez Santiago","e":"ileanaprz@gmail.com","s":"Clicked","d":"May 09, 2026 08:07 pm"},{"n":"Damaris Barreto Montijo","e":"damaris.barreto1@upr.edu","s":"Clicked","d":"May 09, 2026 02:50 pm"},{"n":"Jose Cintron Acevedo","e":"jacintron@metro.inter.edu","s":"Clicked","d":"May 09, 2026 02:26 pm"},{"n":"Luis Mendez Gonzalez","e":"lemg007@gmail.com","s":"Clicked","d":"May 09, 2026 04:12 pm"},{"n":"John Joe Pascoe","e":"john@pascoe.net","s":"Unsubscribed","d":"May 09, 2026 01:33 pm"},{"n":"Rafael Ocasio Lozada","e":"ocasioelectricpower@gmail.com","s":"Clicked","d":"May 09, 2026 11:37 pm"},{"n":"Emanuel De Leon Rivera","e":"emanuel.deleon@upr.edu","s":"Clicked","d":"May 09, 2026 11:26 am"},{"n":"Rossy Ruano Ivette","e":"ivetterossy@yahoo.com","s":"Clicked","d":"May 12, 2026 09:37 pm"},{"n":"Evelyn Cruz Guzman","e":"evelyncruz1966@yahoo.com","s":"Clicked","d":"May 09, 2026 10:45 am"},{"n":"William Rodriguez Cortes","e":"wrc7558@yahoo.com","s":"Clicked","d":"May 11, 2026 08:39 am"},{"n":"Odalys Melendez Marrero","e":"odalysmelendez17@yahoo.com","s":"Clicked","d":"May 10, 2026 07:53 pm"},{"n":"Dianaliz Rodriguez Bonilla","e":"rodriana72@gmail.com","s":"Clicked","d":"May 15, 2026 04:10 pm"},{"n":"Tanya Heredia Segarra","e":"tanyaheredia40@gmail.com","s":"Clicked","d":"May 08, 2026 10:03 pm"},{"n":"Noemi Santos Roldan","e":"noemi.santos88@gmail.com","s":"Clicked","d":"May 13, 2026 12:43 am"},{"n":"Fernando Feliciano Cruz","e":"nfeliciano982@gmail.com","s":"Clicked","d":"May 09, 2026 12:40 pm"},{"n":"Saribeth Jimenez Cabrera","e":"arybel8@hotmail.com","s":"Clicked","d":"May 14, 2026 06:56 am"},{"n":"Francisco Gotay Rullan","e":"gotayfranco92@gmail.com","s":"Clicked","d":"May 14, 2026 03:51 pm"},{"n":"Milagros Rivera Gonzalez","e":"milagrosriveragonz@gmail.com","s":"Clicked","d":"May 08, 2026 02:54 pm"},{"n":"Brenda Otero Nieves","e":"brenda80pr@yahoo.com","s":"Clicked","d":"May 08, 2026 05:08 pm"},{"n":"Jose Villanueva Gonzalez","e":"josevillanuevagonzalez22@gmail.com","s":"Clicked","d":"May 26, 2026 09:59 am"},{"n":"Daniela Cardona Santana","e":"daniela.cardona27@gmail.com","s":"Clicked","d":"May 08, 2026 02:00 pm"},{"n":"Marisol Carrion Melendez","e":"lolacarrion14@gmail.com","s":"Clicked","d":"May 09, 2026 12:05 am"},{"n":"Antonia Cosme Santiago","e":"raulit54@gmail.com","s":"Clicked","d":"May 08, 2026 01:16 pm"},{"n":"Paola Del Valle Berrios","e":"paoladelva6@gmail.com","s":"Clicked","d":"May 07, 2026 08:48 pm"},{"n":"Stephanie Silva Suarez","e":"stephanie.silva3@upr.edu","s":"Clicked","d":"May 07, 2026 02:12 pm"},{"n":"Rene Otero","e":"migcardona@gmail.com","s":"Clicked","d":"May 07, 2026 11:41 am"},{"n":"Belinda Bermudez Nieves","e":"belinda2.2@hotmail.com","s":"Clicked","d":"May 07, 2026 06:40 pm"},{"n":"Daniel Pabon","e":"danielpabon82@gmail.com","s":"Clicked","d":"May 12, 2026 02:20 pm"},{"n":"Lidiette Santos Rios","e":"lidiette.santos@upr.edu","s":"Clicked","d":"May 07, 2026 08:46 am"},{"n":"Ashley Lopez","e":"ashleytamiara@gmail.com","s":"Clicked","d":"May 07, 2026 06:32 am"},{"n":"Nicole Rivera Rivera","e":"josnic32@hotmail.com","s":"Clicked","d":"May 07, 2026 10:18 am"},{"n":"Rosa Villegas Vargas","e":"noel.santi@yahoo.com","s":"Clicked","d":"May 06, 2026 06:41 pm"},{"n":"Yesenia Nieves Vazquez","e":"victoriayesenia77@icloud.com","s":"Clicked","d":"May 06, 2026 06:31 pm"},{"n":"Vivian Hernandez Bou","e":"vbou9456@gmail.com","s":"Clicked","d":"May 08, 2026 09:31 am"},{"n":"David Torres Oquendo","e":"dtorres.oquendo@gmail.com","s":"Clicked","d":"May 07, 2026 06:14 am"},{"n":"Adalberto Negron","e":"keyab516@gmail.com","s":"Clicked","d":"May 06, 2026 06:36 pm"},{"n":"Dimary Diaz Gonzalez","e":"dimarydiaz@yahoo.com","s":"Clicked","d":"May 06, 2026 12:56 pm"},{"n":"Nomar J. Camacho Largacha","e":"nomar1209@gmail.com","s":"Clicked","d":"May 06, 2026 10:25 am"},{"n":"Luis Rivera Miranda","e":"esmeraldapagan59@yahoo.com","s":"Clicked","d":"May 11, 2026 11:05 am"},{"n":"Nancy De Jesus","e":"nancy14_d@yahoo.com","s":"Clicked","d":"May 05, 2026 09:59 pm"},{"n":"Alesha Ivette Velez Cruz","e":"ivettealeysha1718@gmail.com","s":"Clicked","d":"May 05, 2026 10:54 am"},{"n":"Maria Rivera Monzon","e":"w18081967@gmail.com","s":"Clicked","d":"May 05, 2026 11:26 am"},{"n":"Bebo Y Mike","e":"melendezjeannette7@gmail.com","s":"Clicked","d":"May 04, 2026 05:10 pm"},{"n":"Jessica Marie Rivera Narvaez","e":"jessy.c.rivera@gmail.com","s":"Clicked","d":"May 04, 2026 04:26 pm"},{"n":"Margarita Ortiz Quirindongo","e":"marortiz38@gmail.com","s":"Clicked","d":"May 04, 2026 07:43 pm"},{"n":"Linette Martinez Mena","e":"linette6958@gmail.com","s":"Clicked","d":"May 04, 2026 02:12 pm"},{"n":"Carmen Melendez Diaz","e":"dee.davila@gmail.com","s":"Clicked","d":"May 07, 2026 03:52 pm"},{"n":"Rodolfo Torres Andujar","e":"carmensantana09@yahoo.com","s":"Clicked","d":"May 04, 2026 01:24 pm"},{"n":"Maria Polo Heredia","e":"crystalmaria72@gmail.com","s":"Clicked","d":"May 04, 2026 08:13 am"},{"n":"Juan Pagan","e":"japc205@gmail.com","s":"Clicked","d":"May 04, 2026 08:10 am"},{"n":"Gabriela Acevedo Suarez","e":"gsacevedo@gmail.com","s":"Clicked","d":"May 04, 2026 12:07 pm"},{"n":"Edgardo Castro Rivera","e":"ejcastropr@gmail.com","s":"Clicked","d":"May 04, 2026 11:27 am"},{"n":"Luis Reyes Robles","e":"elyluisreyesrobles@gmail.com","s":"Clicked","d":"May 05, 2026 08:11 am"},{"n":"Erika Santiago","e":"yadieri0325@gmail.com","s":"Clicked","d":"May 07, 2026 02:01 pm"},{"n":"Eneida Martinez Gonzalez","e":"eneidayjavier@aol.com","s":"Clicked","d":"May 09, 2026 06:41 am"},{"n":"Jose Nelson Garcia","e":"rodolfojosuerivera85@gmail.com","s":"Clicked","d":"May 04, 2026 08:31 am"},{"n":"Jorge Rivera Rivera","e":"riverayelitza65@gmail.com","s":"Clicked","d":"May 04, 2026 08:10 am"},{"n":"Maria Perez Diaz","e":"griselle820@gmail.com","s":"Clicked","d":"May 15, 2026 02:20 am"},{"n":"Wanda Vargas Baez","e":"rosemarie.rodriguez@upr.edu","s":"Unsubscribed","d":"May 04, 2026 06:23 pm"},{"n":"Josue Diaz","e":"josuediaz1990@hotmail.com","s":"Clicked","d":"May 05, 2026 11:07 am"},{"n":"Nancy Falcon Rivera","e":"nanconteach1959@gmail.com","s":"Clicked","d":"May 02, 2026 06:07 pm"},{"n":"Gilberto Garcia Valle","e":"lgr1874@gmail.com","s":"Clicked","d":"May 03, 2026 02:41 pm"},{"n":"Desiree Ramos Colon","e":"desy_714@yahoo.com","s":"Clicked","d":"May 03, 2026 01:30 pm"},{"n":"Irma Alvarez Lopez","e":"velisnie@gmail.com","s":"Clicked","d":"May 02, 2026 08:10 pm"},{"n":"Vilma M Ferrer Rivera","e":"vazquezroberto20@yahoo.com","s":"Clicked","d":"May 02, 2026 05:41 pm"},{"n":"Juana Molina","e":"juanitamolina70@gmail.com","s":"Clicked","d":"May 04, 2026 09:08 pm"},{"n":"Dalia Cruz Marcano","e":"daliae83@gmail.com","s":"Clicked","d":"May 02, 2026 11:47 am"},{"n":"Ivelisse Santa Vazquez","e":"yamileishka0616@gmail.com","s":"Clicked","d":"May 02, 2026 12:16 pm"},{"n":"Ana Gonzalez Cordova","e":"linamarie103@gmail.com","s":"Clicked","d":"May 03, 2026 02:21 pm"},{"n":"Alba Freytes Andino","e":"alba.freytes@gmail.com","s":"Clicked","d":"May 02, 2026 08:37 am"},{"n":"Cesar Romero Perez","e":"cesarrp302@gmail.com","s":"Clicked","d":"May 02, 2026 10:55 am"},{"n":"Lizabeth Santiago Rivera","e":"troky0460@gmail.com","s":"Unsubscribed","d":"May 02, 2026 12:06 pm"},{"n":"Maria Cotto Diaz","e":"laly282.mcd@gmail.com","s":"Clicked","d":"May 02, 2026 08:43 pm"},{"n":"Annette Reyes Ortiz","e":"nery.enid10@gmail.com","s":"Clicked","d":"May 02, 2026 01:00 pm"},{"n":"Jennifer Acosta Collazo","e":"acostajennifer3@gmail.com","s":"Clicked","d":"May 02, 2026 06:29 pm"},{"n":"Yolymar Pares Galarce","e":"yspares@gmail.com","s":"Clicked","d":"May 02, 2026 09:53 am"},{"n":"Luis Rodriguez Santiago","e":"yedielomar22@gmail.com","s":"Clicked","d":"May 02, 2026 05:19 pm"},{"n":"Yolanda Santiago Torres","e":"yolanda.santiago72@gmail.com","s":"Clicked","d":"May 04, 2026 09:24 am"},{"n":"Saribel Montijo Caraballo","e":"smc.biol89@gmail.com","s":"Clicked","d":"May 04, 2026 07:53 pm"},{"n":"Nashelie Muniz Cabrera","e":"nashelie0416@gmail.com","s":"Clicked","d":"May 07, 2026 01:31 pm"},{"n":"Rafael Figueroa Marzan","e":"soquirolon2@gmail.com","s":"Clicked","d":"May 01, 2026 05:55 pm"},{"n":"Karina Torres Rivera","e":"kmtr2410@yahoo.com","s":"Clicked","d":"May 05, 2026 05:50 pm"},{"n":"Ivelisse Berrios Rojas","e":"brojasrn@gmail.com","s":"Clicked","d":"May 01, 2026 01:35 pm"},{"n":"Lisa Benitez Rodriguez","e":"lisa28benitez@hotmail.com","s":"Clicked","d":"May 04, 2026 11:10 am"},{"n":"Frances Lugo Colon","e":"jedrian1@gmail.com","s":"Clicked","d":"May 01, 2026 07:18 am"},{"n":"Cristina Castro Voltaggio","e":"cristymarie31@gmail.com","s":"Clicked","d":"May 01, 2026 07:52 am"},{"n":"Maria De Lourdes Figueroa","e":"marrerortiz@yahoo.com","s":"Clicked","d":"May 01, 2026 06:25 am"},{"n":"David Baez","e":"davidbrenda101@gmail.com","s":"Clicked","d":"May 01, 2026 06:29 am"},{"n":"Carmen Baez","e":"cbrosado97@yahoo.com","s":"Clicked","d":"May 01, 2026 08:26 pm"},{"n":"Yarimar Rosario Mendez","e":"yarimar.rosario@yahoo.com","s":"Clicked","d":"May 05, 2026 10:19 am"},{"n":"Diana Rodriguez Cores","e":"dianarodriguezcores2@gmail.com","s":"Clicked","d":"May 03, 2026 06:16 pm"},{"n":"Karen Ayala Marshall","e":"k.nahir09@gmail.com","s":"Clicked","d":"Apr 30, 2026 09:23 pm"},{"n":"Carlos Fuentes Collazo","e":"gogeta642009@gmail.com","s":"Clicked","d":"May 04, 2026 09:54 pm"},{"n":"David Cruz Lopez","e":"mrivasfernandez@yahoo.com","s":"Clicked","d":"Apr 30, 2026 03:19 pm"},{"n":"Maria Seijo Jimenez","e":"mariaseijo@gmail.com","s":"Clicked","d":"Apr 30, 2026 01:29 pm"},{"n":"Wanda Carrasquillo Pinto","e":"wandalizette67@gmail.com","s":"Clicked","d":"May 18, 2026 06:47 am"},{"n":"Kevin Suarez Vega","e":"enid.perezruiz@yahoo.com","s":"Clicked","d":"Apr 25, 2026 03:14 am"},{"n":"Rafael Maldonado","e":"yramos2501@gmail.com","s":"Clicked","d":"Apr 26, 2026 05:46 pm"},{"n":"Ivan Plumey","e":"iplumeyppr@gmail.com","s":"Clicked","d":"Apr 25, 2026 04:57 pm"},{"n":"Lydia Ampudia","e":"eampudiacisi@gmail.com","s":"Clicked","d":"Apr 25, 2026 09:03 am"},{"n":"Hilda Quevedo","e":"sandraq02@gmail.com","s":"Clicked","d":"Apr 24, 2026 07:08 pm"},{"n":"Jose Diaz Santiago","e":"josesdiazsantiago@gmail.com","s":"Clicked","d":"May 07, 2026 04:12 pm"},{"n":"Hector Sanchez Nieves","e":"sanchezhector367@gmail.com","s":"Clicked","d":"Apr 24, 2026 03:29 pm"},{"n":"Juanita Salas","e":"buho_1012@yahoo.com","s":"Clicked","d":"Apr 25, 2026 01:41 pm"},{"n":"Miguel Lugo","e":"lugomiguel1221@gmail.com","s":"Clicked","d":"Apr 25, 2026 03:20 pm"}];
+
+let emailCurrentFilter = 'all';
+
+function renderEmailTable(data) {
+  const tbody = document.getElementById('emailTbody');
+  document.getElementById('emailCount').textContent = 'Mostrando ' + data.length + ' contactos';
+  tbody.innerHTML = data.map((r, i) => {
+    const cls = r.s === 'Clicked' ? 'email-clicked' : r.s === 'Unsubscribed' ? 'email-unsub' : 'email-replied';
+    const lbl = r.s === 'Clicked' ? 'Clicked' : r.s === 'Unsubscribed' ? 'Desuscrito' : 'Respondió';
+    return `<tr>
+      <td style="color:#999;font-size:12px">${i+1}</td>
+      <td style="font-weight:600">${r.n}</td>
+      <td style="color:#4B4B4B;font-size:12px">${r.e}</td>
+      <td><span class="status-badge ${cls}">${lbl}</span></td>
+      <td style="font-size:12px;color:#8C8C8C">${r.d}</td>
+    </tr>`;
+  }).join('');
+}
+
+function filterEmail(type, btn) {
+  document.querySelectorAll('#emailFilters .filter-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  emailCurrentFilter = type;
+  applyEmailFilters();
+}
+
+function applyEmailFilters() {
+  const q = document.getElementById('emailSearch').value.toLowerCase();
+  const filtered = emailData.filter(r => {
+    const matchStatus = emailCurrentFilter === 'all' || r.s === emailCurrentFilter;
+    const matchSearch = !q || r.n.toLowerCase().includes(q) || r.e.toLowerCase().includes(q);
+    return matchStatus && matchSearch;
+  });
+  renderEmailTable(filtered);
+}
+
+renderEmailTable(emailData);
 </script>
 </body>
 </html>
