@@ -43,12 +43,13 @@
 
   .kpi-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 16px; margin-bottom: 40px; }
   .kpi-card { background: var(--white); border-radius: 12px; padding: 22px 20px; box-shadow: 0 1px 4px rgba(0,0,0,0.08); border-top: 4px solid var(--blue); }
-  .kpi-card.green { border-top-color: #15803D; }
-  .kpi-card.amber { border-top-color: #D97706; }
+  .kpi-card.green  { border-top-color: #15803D; }
+  .kpi-card.amber  { border-top-color: #D97706; }
   .kpi-card.accent { border-top-color: #2563EB; }
-  .kpi-card.gray { border-top-color: #6B7280; }
-  .kpi-card.rose { border-top-color: #BE123C; }
+  .kpi-card.gray   { border-top-color: #6B7280; }
+  .kpi-card.rose   { border-top-color: #BE123C; }
   .kpi-card.purple { border-top-color: #7C3AED; }
+  .kpi-card.orange { border-top-color: #9A3412; }
   .kpi-label { font-size: 12px; font-weight: 600; color: var(--gray-mid); text-transform: uppercase; letter-spacing: 0.8px; margin-bottom: 8px; }
   .kpi-value { font-size: 36px; font-weight: 800; color: var(--black); line-height: 1; }
   .kpi-sub { font-size: 12px; color: var(--gray-mid); margin-top: 6px; }
@@ -60,7 +61,7 @@
   .chart-wrap { position: relative; height: 260px; }
   .chart-wrap.tall { height: 320px; }
 
-  .weeks-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-bottom: 40px; }
+  .weeks-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-bottom: 40px; }
   .week-card { background: var(--white); border-radius: 12px; overflow: hidden; box-shadow: 0 1px 4px rgba(0,0,0,0.08); }
   .week-header { padding: 14px 18px; background: var(--black); color: white; }
   .week-header h3 { font-size: 15px; font-weight: 700; }
@@ -71,7 +72,7 @@
   .week-stat:last-child { border-bottom: none; }
   .week-stat-label { color: var(--gray-dark); }
   .week-stat-val { font-weight: 700; }
-  .week-stat-val.red { color: #DC2626; }
+  .week-stat-val.red   { color: #DC2626; }
   .week-stat-val.green { color: var(--green); }
   .week-stat-val.amber { color: var(--amber); }
   .mini-bar-row { display: flex; align-items: center; gap: 6px; margin: 3px 0; font-size: 11px; }
@@ -86,11 +87,11 @@
   .reco-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; margin-top: 16px; }
   .reco-card { border: 1px solid var(--gray-light); border-radius: 10px; padding: 18px; }
   .reco-card.alert { border-left: 4px solid #DC2626; background: #FFF8F8; }
-  .reco-card.info { border-left: 4px solid var(--blue); background: #F0F5FF; }
-  .reco-card.tip { border-left: 4px solid #15803D; background: #F0FDF4; }
-  .reco-icon { font-size: 22px; margin-bottom: 8px; }
+  .reco-card.info  { border-left: 4px solid var(--blue); background: #F0F5FF; }
+  .reco-card.tip   { border-left: 4px solid #15803D; background: #F0FDF4; }
+  .reco-icon  { font-size: 22px; margin-bottom: 8px; }
   .reco-title { font-size: 14px; font-weight: 700; margin-bottom: 6px; }
-  .reco-text { font-size: 13px; color: var(--gray-dark); line-height: 1.5; }
+  .reco-text  { font-size: 13px; color: var(--gray-dark); line-height: 1.5; }
 
   .disclaimer { background: #F0F5FF; border: 1px solid #BFDBFE; border-radius: 10px; padding: 16px 20px; margin-bottom: 40px; font-size: 13px; color: #1E3A8A; }
   .disclaimer strong { display: block; margin-bottom: 4px; }
@@ -112,13 +113,14 @@
   tbody tr:hover { background: #FAFAFA; }
   tbody td { padding: 9px 12px; vertical-align: middle; }
   .status-badge { display: inline-block; padding: 3px 10px; border-radius: 12px; font-size: 11px; font-weight: 700; white-space: nowrap; }
-  .status-cwna { background: var(--amber-bg); color: var(--amber); }
-  .status-fus { background: var(--accent-bg); color: var(--accent); }
-  .status-apt { background: var(--green-bg); color: var(--green); }
-  .status-ni { background: #F3F4F6; color: #374151; }
-  .status-pqs { background: var(--purple-bg); color: var(--purple); }
-  .status-ncy { background: var(--rose-bg); color: var(--rose); }
-  .status-ina { background: #F0F5FF; color: var(--blue); }
+  .status-cwna { background: var(--amber-bg);  color: var(--amber); }
+  .status-fus  { background: var(--accent-bg); color: var(--accent); }
+  .status-apt  { background: var(--green-bg);  color: var(--green); }
+  .status-ni   { background: #F3F4F6; color: #374151; }
+  .status-pqs  { background: var(--purple-bg); color: var(--purple); }
+  .status-ncy  { background: var(--rose-bg);   color: var(--rose); }
+  .status-ina  { background: #F0F5FF; color: var(--blue); }
+  .status-dq   { background: #FFEDD5; color: #9A3412; }
   .origin-badge { font-size: 11px; font-weight: 600; padding: 2px 8px; border-radius: 8px; }
   .origin-dm { background: #EBF3FF; color: #1640A0; }
   .origin-nf { background: #E7F5ED; color: #1A6B35; }
@@ -129,7 +131,7 @@
 
   @media (max-width: 900px) {
     .charts-grid { grid-template-columns: 1fr; }
-    .weeks-grid { grid-template-columns: 1fr 1fr; }
+    .weeks-grid  { grid-template-columns: 1fr 1fr; }
   }
   @media (max-width: 600px) {
     .weeks-grid { grid-template-columns: 1fr; }
@@ -145,9 +147,9 @@
   <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAV4AAABDCAYAAADUFG3rAAAACXBIWXMAAAsTAAALEwEAmpwYAAAF+mlUWHRYTUw6Y29tLmFkb2JlLnhtcAAAAAAAPD94cGFja2V0IGJlZ2luPSLvu78iIGlkPSJXNU0wTXBDZWhpSHpyZVN6TlRjemtjOWQiPz4gPHg6eG1wbWV0YSB4bWxuczp4PSJhZG9iZTpuczptZXRhLyIgeDp4bXB0az0iQWRvYmUgWE1QIENvcmUgNS42LWMxNDIgNzkuMTYwOTI0LCAyMDE3LzA3LzEzLTAxOjA2OjM5ICAgICAgICAiPiA8cmRmOlJERiB4bWxuczpyZGY9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkvMDIvMjItcmRmLXN5bnRheC1ucyMiPiA8cmRmOkRlc2NyaXB0aW9uIHJkZjphYm91dD0iIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtbG5zOmRjPSJodHRwOi8vcHVybC5vcmcvZGMvZWxlbWVudHMvMS4xLyIgeG1sbnM6cGhvdG9zaG9wPSJodHRwOi8vbnMuYWRvYmUuY29tL3Bob3Rvc2hvcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RFdnQ9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZUV2ZW50IyIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ0MgMjAxOCAoV2luZG93cykiIHhtcDpDcmVhdGVEYXRlPSIyMDE5LTEwLTMxVDEzOjAwOjM2LTA0OjAwIiB4bXA6TW9kaWZ5RGF0ZT0iMjAxOS0xMC0zMVQxMzowNDo1Mi0wNDowMCIgeG1wOk1ldGFkYXRhRGF0ZT0iMjAxOS0xMC0zMVQxMzowNDo1Mi0wNDowMCIgZGM6Zm9ybWF0PSJpbWFnZS9wbmciIHBob3Rvc2hvcDpDb2xvck1vZGU9IjMiIHBob3Rvc2hvcDpJQ0NQcm9maWxlPSJzUkdCIElFQzYxOTY2LTIuMSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozNDFiZDlmZi1hZjlmLTdjNDgtOGYxYy0wOWE4ZThjM2U3NjAiIHhtcE1NOkRvY3VtZW50SUQ9ImFkb2JlOmRvY2lkOnBob3Rvc2hvcDpkNmU0ZmY0NS0zYWM1LWM4NDUtOGMzZi01ZjJjOTdhMmEyMWEiIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDplNjNiOTQzNi04NTg4LTQ2NGYtYWI4ZS0yNzBkN2EzMmVkNGEiPiA8eG1wTU06SGlzdG9yeT4gPHJkZjpTZXE+IDxyZGY6bGkgc3RFdnQ6YWN0aW9uPSJjcmVhdGVkIiBzdEV2dDppbnN0YW5jZUlEPSJ4bXAuaWlkOmU2M2I5NDM2LTg1ODgtNDY0Zi1hYjhlLTI3MGQ3YTMyZWQ0YSIgc3RFdnQ6d2hlbj0iMjAxOS0xMC0zMVQxMzowMDozNi0wNDowMCIgc3RFdnQ6c29mdHdhcmVBZ2VudD0iQWRvYmUgUGhvdG9zaG9wIENDIDIwMTggKFdpbmRvd3MpIi8+IDxyZGY6bGkgc3RFdnQ6YWN0aW9uPSJzYXZlZCIgc3RFdnQ6aW5zdGFuY2VJRD0ieG1wLmlpZDozNDFiZDlmZi1hZjlmLTdjNDgtOGYxYy0wOWE4ZThjM2U3NjAiIHN0RXZ0OndoZW49IjIwMTktMTAtMzFUMTM6MDQ6NTItMDQ6MDAiIHN0RXZ0OnNvZnR3YXJlQWdlbnQ9IkFkb2JlIFBob3Rvc2hvcCBDQyAyMDE4IChXaW5kb3dzKSIgc3RFdnQ6Y2hhbmdlZD0iLyIvPiA8L3JkZjpTZXE+IDwveG1wTU06SGlzdG9yeT4gPC9yZGY6RGVzY3JpcHRpb24+IDwvcmRmOlJERj4gPC94OnhtcG1ldGE+IDw/eHBhY2tldCBlbmQ9InIiPz5aXAIUAABFJUlEQVR4nO2dd5wlVZn3v+ecqps7h5menjzDkCW4gApGRF0DiqxrREXBVcy66uq7rou7JtxVYTGgC5gx7KooYEBcBCTHIQwwebpnpqfz7ZsrnfePU3Xv7du3e3qGUZixf59P9a1w6tSp6qrfec5zniC01hyqGJ+Y4Lbb70QqhZISENVjor6gmL7S/JjZmLa5t+OiseiMHQ2rM3Y0rO7teN2W2Ndj0w/MPDa/46L5gVqJhgLR+2d+dN12bb1xu8k5NrBYa3241nSD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" alt="Barranquitas Mazda">
   <div class="header-text">
     <h1>Reporte de Gestión de Leads</h1>
-    <p>Barranquitas Mazda &nbsp;·&nbsp; Mayo 16 – 31, 2026</p>
+    <p>Barranquitas Mazda &nbsp;·&nbsp; Mayo 16 – Junio 22, 2026</p>
   </div>
-  <div class="header-badge">META Ads · Mayo 2026</div>
+  <div class="header-badge">META Ads · Mayo–Junio 2026</div>
 </div>
 
 <div class="container">
@@ -158,33 +160,38 @@
     <div class="kpi-grid">
       <div class="kpi-card">
         <div class="kpi-label">Total Leads</div>
-        <div class="kpi-value">41</div>
-        <div class="kpi-sub">May 16 – May 31, 2026</div>
+        <div class="kpi-value">161</div>
+        <div class="kpi-sub">Mayo 16 – Junio 22, 2026</div>
       </div>
       <div class="kpi-card accent">
         <div class="kpi-label">Citas Agendadas</div>
         <div class="kpi-value" style="color:#2563EB">2</div>
-        <div class="kpi-sub">Visitas al dealer pendientes</div>
+        <div class="kpi-sub">Ambas en Mayo — 0 en Junio</div>
       </div>
       <div class="kpi-card purple">
         <div class="kpi-label">Pre-Calificados</div>
-        <div class="kpi-value" style="color:#7C3AED">2</div>
-        <div class="kpi-sub">En proceso de pre-calificación</div>
+        <div class="kpi-value" style="color:#7C3AED">3</div>
+        <div class="kpi-sub">2 Mayo + 1 Junio</div>
       </div>
       <div class="kpi-card amber">
         <div class="kpi-label">Requieren Acción</div>
-        <div class="kpi-value" style="color:#D97706">24</div>
-        <div class="kpi-sub">CWNA + Follow Up pendientes</div>
+        <div class="kpi-value" style="color:#D97706">120</div>
+        <div class="kpi-sub">CWNA (87) + Follow Up (33)</div>
       </div>
       <div class="kpi-card rose">
         <div class="kpi-label">Sin Contactar</div>
-        <div class="kpi-value" style="color:#BE123C">8</div>
+        <div class="kpi-value" style="color:#BE123C">18</div>
         <div class="kpi-sub">Nunca recibieron respuesta</div>
       </div>
       <div class="kpi-card gray">
         <div class="kpi-label">No Interesados</div>
-        <div class="kpi-value" style="color:#6B7280">4</div>
+        <div class="kpi-value" style="color:#6B7280">14</div>
         <div class="kpi-sub">Descartados del pipeline</div>
+      </div>
+      <div class="kpi-card orange">
+        <div class="kpi-label">Descalificados</div>
+        <div class="kpi-value" style="color:#9A3412">3</div>
+        <div class="kpi-sub">Nuevo estatus — solo en Junio</div>
       </div>
     </div>
   </div>
@@ -193,8 +200,8 @@
   <div class="alert-banner">
     <div class="alert-banner-icon">🎯</div>
     <div class="alert-banner-text">
-      <strong>8 leads sin contactar + 17 con "Sin Respuesta" — Oportunidad inmediata de recuperación</strong>
-      <span>El 61% de los leads (25/41) aún están disponibles para contacto. Una campaña de reactivación puede convertir varios de estos en citas reales.</span>
+      <strong>87 Sin Respuesta + 18 Sin Contactar — 65% del pipeline total requiere acción inmediata</strong>
+      <span>Junio triplicó el volumen (120 vs 41 leads) pero cerró con 0 citas, vs 2 en Mayo. El problema no es generación de leads — es el proceso de seguimiento post-contacto.</span>
     </div>
   </div>
 
@@ -230,7 +237,7 @@
     <!-- SEMANA 1 -->
     <div class="week-card">
       <div class="week-header">
-        <h3>Semana 1</h3>
+        <h3>Semana 1 · Mayo</h3>
         <div class="week-total">9</div>
         <small>Mayo 16 – 18</small>
       </div>
@@ -246,14 +253,14 @@
           <div class="mini-bar-row"><span class="mini-bar-label">Cita Agendada</span><div class="mini-bar-track"><div class="mini-bar-fill" style="width:11%;background:#10B981"></div></div><span class="mini-bar-num">1</span></div>
           <div class="mini-bar-row"><span class="mini-bar-label">Inventario N/D</span><div class="mini-bar-track"><div class="mini-bar-fill" style="width:11%;background:#93C5FD"></div></div><span class="mini-bar-num">1</span></div>
         </div>
-        <div class="week-alert good">✅ Mejor semana — 4 follow-ups y 1 cita agendada</div>
+        <div class="week-alert good">✅ Mejor arranque — 4 follow-ups y 1 cita agendada</div>
       </div>
     </div>
 
     <!-- SEMANA 2 -->
     <div class="week-card">
       <div class="week-header">
-        <h3>Semana 2</h3>
+        <h3>Semana 2 · Mayo</h3>
         <div class="week-total">11</div>
         <small>Mayo 19 – 25</small>
       </div>
@@ -270,50 +277,98 @@
           <div class="mini-bar-row"><span class="mini-bar-label">Pre-calificado</span><div class="mini-bar-track"><div class="mini-bar-fill" style="width:9%;background:#8B5CF6"></div></div><span class="mini-bar-num">1</span></div>
           <div class="mini-bar-row"><span class="mini-bar-label">Sin contactar</span><div class="mini-bar-track"><div class="mini-bar-fill" style="width:9%;background:#F43F5E"></div></div><span class="mini-bar-num">1</span></div>
         </div>
-        <div class="week-alert">⚡ Solo Native Form — 3 leads no interesados indican desalineamiento creativo</div>
+        <div class="week-alert">⚡ Solo Native Form — 3 no interesados indican desalineamiento creativo</div>
       </div>
     </div>
 
     <!-- SEMANA 3 -->
     <div class="week-card">
       <div class="week-header" style="background:#7C1C1C;">
-        <h3>Semana 3</h3>
-        <div class="week-total">12</div>
-        <small>Mayo 27 – 29 · Mayor volumen</small>
+        <h3>Semana 3 · Mayo</h3>
+        <div class="week-total">21</div>
+        <small>Mayo 26 – 31 · Mix DMs+NF</small>
       </div>
       <div class="week-body">
-        <div class="week-stat"><span class="week-stat-label">Native Form</span><span class="week-stat-val">9 (75%)</span></div>
-        <div class="week-stat"><span class="week-stat-label">DM's</span><span class="week-stat-val">3 (25%)</span></div>
-        <div class="week-stat"><span class="week-stat-label">Sin contactar</span><span class="week-stat-val red">2 (16.7%)</span></div>
+        <div class="week-stat"><span class="week-stat-label">Native Form</span><span class="week-stat-val">10 (47.6%)</span></div>
+        <div class="week-stat"><span class="week-stat-label">DM's</span><span class="week-stat-val">11 (52.4%)</span></div>
+        <div class="week-stat"><span class="week-stat-label">Sin contactar</span><span class="week-stat-val red">5 (23.8%)</span></div>
         <div class="week-stat"><span class="week-stat-label">Pre-calificados</span><span class="week-stat-val green">1</span></div>
         <div style="margin-top:10px;">
-          <div class="mini-bar-row"><span class="mini-bar-label">Sin Respuesta (CWNA)</span><div class="mini-bar-track"><div class="mini-bar-fill" style="width:58%;background:#F59E0B"></div></div><span class="mini-bar-num">7</span></div>
-          <div class="mini-bar-row"><span class="mini-bar-label">Sin contactar</span><div class="mini-bar-track"><div class="mini-bar-fill" style="width:17%;background:#F43F5E"></div></div><span class="mini-bar-num">2</span></div>
-          <div class="mini-bar-row"><span class="mini-bar-label">Follow Up Sched.</span><div class="mini-bar-track"><div class="mini-bar-fill" style="width:8%;background:#3B82F6"></div></div><span class="mini-bar-num">1</span></div>
-          <div class="mini-bar-row"><span class="mini-bar-label">No interesado</span><div class="mini-bar-track"><div class="mini-bar-fill" style="width:8%;background:#9CA3AF"></div></div><span class="mini-bar-num">1</span></div>
-          <div class="mini-bar-row"><span class="mini-bar-label">Pre-calificado</span><div class="mini-bar-track"><div class="mini-bar-fill" style="width:8%;background:#8B5CF6"></div></div><span class="mini-bar-num">1</span></div>
+          <div class="mini-bar-row"><span class="mini-bar-label">Sin Respuesta (CWNA)</span><div class="mini-bar-track"><div class="mini-bar-fill" style="width:62%;background:#F59E0B"></div></div><span class="mini-bar-num">13</span></div>
+          <div class="mini-bar-row"><span class="mini-bar-label">Sin contactar</span><div class="mini-bar-track"><div class="mini-bar-fill" style="width:24%;background:#F43F5E"></div></div><span class="mini-bar-num">5</span></div>
+          <div class="mini-bar-row"><span class="mini-bar-label">Pre-calificado</span><div class="mini-bar-track"><div class="mini-bar-fill" style="width:5%;background:#8B5CF6"></div></div><span class="mini-bar-num">1</span></div>
+          <div class="mini-bar-row"><span class="mini-bar-label">No interesado</span><div class="mini-bar-track"><div class="mini-bar-fill" style="width:5%;background:#9CA3AF"></div></div><span class="mini-bar-num">1</span></div>
+          <div class="mini-bar-row"><span class="mini-bar-label">Follow Up Sched.</span><div class="mini-bar-track"><div class="mini-bar-fill" style="width:5%;background:#3B82F6"></div></div><span class="mini-bar-num">1</span></div>
         </div>
-        <div class="week-alert" style="background:#FFE0E0;border-color:#FFBCBC;color:#991B1B;">🚨 7 leads con "Sin Respuesta" — Recontactar esta semana es prioridad</div>
+        <div class="week-alert" style="background:#FFE0E0;border-color:#FFBCBC;color:#991B1B;">🚨 13 leads "Sin Respuesta" — mayor backlog de Mayo</div>
       </div>
     </div>
 
     <!-- SEMANA 4 -->
     <div class="week-card">
-      <div class="week-header">
-        <h3>Semana 4</h3>
-        <div class="week-total">9</div>
-        <small>Mayo 30 – 31</small>
+      <div class="week-header" style="background:#8B0000;">
+        <h3>Semana 4 · Junio</h3>
+        <div class="week-total">46</div>
+        <small>Junio 1 – 7 · Explosión DMs</small>
       </div>
       <div class="week-body">
-        <div class="week-stat"><span class="week-stat-label">Native Form</span><span class="week-stat-val">1 (11.1%)</span></div>
-        <div class="week-stat"><span class="week-stat-label">DM's</span><span class="week-stat-val">8 (88.9%)</span></div>
-        <div class="week-stat"><span class="week-stat-label">Sin contactar</span><span class="week-stat-val red">3 (33.3%)</span></div>
-        <div class="week-stat"><span class="week-stat-label">Citas agendadas</span><span class="week-stat-val amber">0</span></div>
+        <div class="week-stat"><span class="week-stat-label">Native Form</span><span class="week-stat-val">6 (13.0%)</span></div>
+        <div class="week-stat"><span class="week-stat-label">DM's</span><span class="week-stat-val">38 (82.6%)</span></div>
+        <div class="week-stat"><span class="week-stat-label">Sin contactar</span><span class="week-stat-val amber">2 (4.3%)</span></div>
+        <div class="week-stat"><span class="week-stat-label">Citas agendadas</span><span class="week-stat-val red">0</span></div>
         <div style="margin-top:10px;">
-          <div class="mini-bar-row"><span class="mini-bar-label">Sin Respuesta (CWNA)</span><div class="mini-bar-track"><div class="mini-bar-fill" style="width:67%;background:#F59E0B"></div></div><span class="mini-bar-num">6</span></div>
-          <div class="mini-bar-row"><span class="mini-bar-label">Sin contactar</span><div class="mini-bar-track"><div class="mini-bar-fill" style="width:33%;background:#F43F5E"></div></div><span class="mini-bar-num">3</span></div>
+          <div class="mini-bar-row"><span class="mini-bar-label">Sin Respuesta (CWNA)</span><div class="mini-bar-track"><div class="mini-bar-fill" style="width:67%;background:#F59E0B"></div></div><span class="mini-bar-num">31</span></div>
+          <div class="mini-bar-row"><span class="mini-bar-label">Follow Up Sched.</span><div class="mini-bar-track"><div class="mini-bar-fill" style="width:22%;background:#3B82F6"></div></div><span class="mini-bar-num">10</span></div>
+          <div class="mini-bar-row"><span class="mini-bar-label">Sin contactar</span><div class="mini-bar-track"><div class="mini-bar-fill" style="width:4%;background:#F43F5E"></div></div><span class="mini-bar-num">2</span></div>
+          <div class="mini-bar-row"><span class="mini-bar-label">Descalificado</span><div class="mini-bar-track"><div class="mini-bar-fill" style="width:4%;background:#EA580C"></div></div><span class="mini-bar-num">2</span></div>
+          <div class="mini-bar-row"><span class="mini-bar-label">No interesado</span><div class="mini-bar-track"><div class="mini-bar-fill" style="width:2%;background:#9CA3AF"></div></div><span class="mini-bar-num">1</span></div>
         </div>
-        <div class="week-alert">📱 Semana dominada por DM's — 0 citas en solo 2 días, leads recientes aún recuperables</div>
+        <div class="week-alert" style="background:#FFE0E0;border-color:#FFBCBC;color:#991B1B;">🚨 83% DMs — 31 sin respuesta, 0 citas agendadas</div>
+      </div>
+    </div>
+
+    <!-- SEMANA 5 -->
+    <div class="week-card">
+      <div class="week-header">
+        <h3>Semana 5 · Junio</h3>
+        <div class="week-total">24</div>
+        <small>Junio 8 – 14</small>
+      </div>
+      <div class="week-body">
+        <div class="week-stat"><span class="week-stat-label">Native Form</span><span class="week-stat-val">10 (41.7%)</span></div>
+        <div class="week-stat"><span class="week-stat-label">DM's</span><span class="week-stat-val">14 (58.3%)</span></div>
+        <div class="week-stat"><span class="week-stat-label">Sin contactar</span><span class="week-stat-val amber">3 (12.5%)</span></div>
+        <div class="week-stat"><span class="week-stat-label">Citas agendadas</span><span class="week-stat-val red">0</span></div>
+        <div style="margin-top:10px;">
+          <div class="mini-bar-row"><span class="mini-bar-label">Sin Respuesta (CWNA)</span><div class="mini-bar-track"><div class="mini-bar-fill" style="width:50%;background:#F59E0B"></div></div><span class="mini-bar-num">12</span></div>
+          <div class="mini-bar-row"><span class="mini-bar-label">Follow Up Sched.</span><div class="mini-bar-track"><div class="mini-bar-fill" style="width:38%;background:#3B82F6"></div></div><span class="mini-bar-num">9</span></div>
+          <div class="mini-bar-row"><span class="mini-bar-label">Sin contactar</span><div class="mini-bar-track"><div class="mini-bar-fill" style="width:13%;background:#F43F5E"></div></div><span class="mini-bar-num">3</span></div>
+        </div>
+        <div class="week-alert good">✅ 9 Follow-Ups — mejor semana de engagement del período</div>
+      </div>
+    </div>
+
+    <!-- SEMANA 6 -->
+    <div class="week-card">
+      <div class="week-header" style="background:#7C1C1C;">
+        <h3>Semana 6 · Junio</h3>
+        <div class="week-total">50</div>
+        <small>Junio 15 – 22 · Mayor volumen</small>
+      </div>
+      <div class="week-body">
+        <div class="week-stat"><span class="week-stat-label">Native Form</span><span class="week-stat-val">42 (84.0%)</span></div>
+        <div class="week-stat"><span class="week-stat-label">DM's</span><span class="week-stat-val">8 (16.0%)</span></div>
+        <div class="week-stat"><span class="week-stat-label">Sin contactar</span><span class="week-stat-val amber">5 (10.0%)</span></div>
+        <div class="week-stat"><span class="week-stat-label">Pre-calificados</span><span class="week-stat-val green">1</span></div>
+        <div style="margin-top:10px;">
+          <div class="mini-bar-row"><span class="mini-bar-label">Sin Respuesta (CWNA)</span><div class="mini-bar-track"><div class="mini-bar-fill" style="width:54%;background:#F59E0B"></div></div><span class="mini-bar-num">27</span></div>
+          <div class="mini-bar-row"><span class="mini-bar-label">No interesado</span><div class="mini-bar-track"><div class="mini-bar-fill" style="width:18%;background:#9CA3AF"></div></div><span class="mini-bar-num">9</span></div>
+          <div class="mini-bar-row"><span class="mini-bar-label">Follow Up Sched.</span><div class="mini-bar-track"><div class="mini-bar-fill" style="width:14%;background:#3B82F6"></div></div><span class="mini-bar-num">7</span></div>
+          <div class="mini-bar-row"><span class="mini-bar-label">Sin contactar</span><div class="mini-bar-track"><div class="mini-bar-fill" style="width:10%;background:#F43F5E"></div></div><span class="mini-bar-num">5</span></div>
+          <div class="mini-bar-row"><span class="mini-bar-label">Pre-calificado</span><div class="mini-bar-track"><div class="mini-bar-fill" style="width:2%;background:#8B5CF6"></div></div><span class="mini-bar-num">1</span></div>
+          <div class="mini-bar-row"><span class="mini-bar-label">Descalificado</span><div class="mini-bar-track"><div class="mini-bar-fill" style="width:2%;background:#EA580C"></div></div><span class="mini-bar-num">1</span></div>
+        </div>
+        <div class="week-alert" style="background:#FFE0E0;border-color:#FFBCBC;color:#991B1B;">⚠️ 9 no interesados — revisar creativos y segmentación</div>
       </div>
     </div>
 
@@ -325,33 +380,33 @@
     <div class="reco-grid">
       <div class="reco-card alert">
         <div class="reco-icon">🚨</div>
-        <div class="reco-title">8 Leads Sin Contactar — Acción Inmediata</div>
-        <div class="reco-text">Hay 8 leads que nunca recibieron ningún contacto de respuesta. Son los más calientes porque llegaron recientemente. Contactar antes de las próximas 24–48 horas para maximizar posibilidades de conversión.</div>
+        <div class="reco-title">18 Leads Sin Contactar — Prioridad Máxima</div>
+        <div class="reco-text">Hay 18 leads que nunca recibieron respuesta alguna. Son los más calientes del pipeline y los más fáciles de recuperar. Contactar en las próximas 24 horas — cada día que pasa reduce las probabilidades de conversión un 30–40%.</div>
       </div>
       <div class="reco-card alert">
         <div class="reco-icon">📞</div>
-        <div class="reco-title">17 Leads "Sin Respuesta" — Campaña de Reactivación</div>
-        <div class="reco-text">Los leads en "Contact With No Answer" no han respondido pero siguen siendo contactables. Intentar por un canal diferente (llamada si vino por DM, mensaje si vino por formulario). Un segundo o tercer intento puede recuperar 15–25% de estos leads.</div>
+        <div class="reco-title">87 "Sin Respuesta" — Campaña de Reactivación Multi-Canal</div>
+        <div class="reco-text">El 54% del total está en CWNA. Implementar secuencia de 3 intentos: 1er — WhatsApp, 2do — llamada directa, 3er — mensaje de texto. Un segundo o tercer intento por canal distinto puede recuperar el 15–25% de estos leads.</div>
+      </div>
+      <div class="reco-card alert">
+        <div class="reco-icon">📉</div>
+        <div class="reco-title">0 Citas en Junio — Colapso de Conversión</div>
+        <div class="reco-text">Mayo cerró 2 citas de 41 leads (4.9%). Junio no logró ninguna de 120 leads (0%). El volumen se triplicó pero la conversión colapsó. El problema está en el proceso de seguimiento post-contacto, no en la generación de leads. Revisar la secuencia cuando un lead responde.</div>
       </div>
       <div class="reco-card info">
         <div class="reco-icon">📅</div>
-        <div class="reco-title">7 Follow-Ups Pendientes — Leads Cálidos</div>
-        <div class="reco-text">Los leads en "Follow Up Scheduled" indicaron que seguirían en contacto. Son leads cálidos con alta intención. Prioridad #1 en el pipeline — verificar si ya fueron recontactados y documentar el resultado en CRM.</div>
+        <div class="reco-title">33 Follow-Ups Pendientes — Leads Cálidos en Espera</div>
+        <div class="reco-text">Los leads en "Follow Up Scheduled" indicaron intención de continuar. Son los más calificados del pipeline activo — 10 de semana 4, 9 de semana 5 y 7 de semana 6. Prioridad #1 después de los NCY. Documentar cada resultado en el CRM.</div>
       </div>
       <div class="reco-card info">
         <div class="reco-icon">🤝</div>
-        <div class="reco-title">2 Citas + 2 Pre-Calificados — Cierre Próximo</div>
-        <div class="reco-text">César Casul Rivera y Manuel Rivera tienen cita agendada. Lopez Madelaine y Gian Cordero están en pre-calificación. Estos 4 leads están en las etapas más avanzadas del funnel — asegurar preparación del equipo de ventas para el cierre.</div>
-      </div>
-      <div class="reco-card tip">
-        <div class="reco-icon">📱</div>
-        <div class="reco-title">DM's Creciendo — Semana 4 fue 89% DM's</div>
-        <div class="reco-text">En la última semana, 8 de 9 leads llegaron por DMs. Esto indica que el contenido orgánico o los anuncios de engagement están funcionando. Asegurar respuesta rápida en DMs (menos de 1 hora) para no perder el momentum.</div>
+        <div class="reco-title">2 Citas + 3 Pre-Calificados — Cierre Próximo</div>
+        <div class="reco-text">César Casul Rivera y Manuel Rivera tienen cita agendada. López Madelaine, Gian Cordero y Nancy M Torres Berrios están en pre-calificación. Estos 5 leads son los más avanzados del funnel — asegurar preparación del equipo de ventas para el cierre.</div>
       </div>
       <div class="reco-card tip">
         <div class="reco-icon">📊</div>
-        <div class="reco-title">Revisar Creativos — 4 Leads "No Interesados"</div>
-        <div class="reco-text">4 leads descartaron la conversación rápidamente. Analizar los anuncios que los trajeron para verificar que el mensaje (modelo, precio, condiciones) sea coherente con lo que ve el lead cuando contacta al dealer. Reducir leads de baja calidad.</div>
+        <div class="reco-title">DMs en Junio Semana 4 (83%) — Respuesta en &lt;30 min</div>
+        <div class="reco-text">La semana del 1–7 de junio llegaron 46 leads, 82.6% por DMs, pero 31 (67%) terminaron en CWNA. Los DMs masivos sin respuesta inmediata pierden el momentum. Asignar personal dedicado a responder DMs con un tiempo máximo de 30 minutos durante horas pico.</div>
       </div>
     </div>
   </div>
@@ -359,20 +414,20 @@
   <!-- DISCLAIMER -->
   <div class="disclaimer">
     <strong>⚠️ Nota Importante — Disclaimer</strong>
-    Las llamadas telefónicas directas NO están reflejadas en este reporte. El análisis se basa exclusivamente en los registros del CRM. La actividad real de contacto puede ser mayor a lo que muestran los registros de "First Contact Date". Se recomienda complementar este reporte con los registros de llamadas del equipo de ventas para obtener una imagen completa.
+    Las llamadas telefónicas directas NO están reflejadas en este reporte. El análisis se basa exclusivamente en los registros del CRM. Los datos de Junio cubren del 1 al 22 (22 de 30 días) — el mes aún no ha concluido. Se recomienda complementar este reporte con los registros de llamadas del equipo de ventas para obtener una imagen completa.
   </div>
 
   <!-- TABLA DE LEADS -->
   <div class="section-title">Directorio de Leads — Para Acción Inmediata</div>
   <div class="table-section">
     <div class="table-filters">
-      <button class="filter-btn active" onclick="filterLeads('all', this)">Todos (41)</button>
-      <button class="filter-btn" onclick="filterLeads('action', this)">⚡ Requieren Acción (24)</button>
-      <button class="filter-btn" onclick="filterLeads('Contact With No Answer', this)">Sin Respuesta (17)</button>
-      <button class="filter-btn" onclick="filterLeads('Not Contacted Yet', this)">Sin Contactar (8)</button>
+      <button class="filter-btn active" onclick="filterLeads('all', this)">Todos (161)</button>
+      <button class="filter-btn" onclick="filterLeads('action', this)">⚡ Requieren Acción (120)</button>
+      <button class="filter-btn" onclick="filterLeads('Contact With No Answer', this)">Sin Respuesta (87)</button>
+      <button class="filter-btn" onclick="filterLeads('Not Contacted Yet', this)">Sin Contactar (18)</button>
     </div>
     <input type="text" class="table-search" id="leadSearch" placeholder="Buscar lead por nombre..." onkeyup="applyFilters()">
-    <div class="table-count" id="leadCount">Mostrando 41 leads</div>
+    <div class="table-count" id="leadCount">Mostrando 161 leads</div>
     <div class="table-wrap">
       <table>
         <thead>
@@ -394,56 +449,178 @@
 
 <!-- FOOTER -->
 <div class="footer">
-  Reporte generado por <span>Focus Hub</span> &nbsp;·&nbsp; Barranquitas Mazda &nbsp;·&nbsp; Mayo 2026
+  Reporte generado por <span>Focus Hub</span> &nbsp;·&nbsp; Barranquitas Mazda &nbsp;·&nbsp; Mayo–Junio 2026
 </div>
 
 <script>
-const BLUE = '#002D74';
+const BLUE  = '#002D74';
 const BLACK = '#1A1A1A';
 
-// ── DATOS ─────────────────────────────────────────────────────────────────────
+// ── DATOS (Mayo 16 – Junio 22) ─────────────────────────────────────────────
 const leads = [
-  {n:"Jossean Roman",         s:"Not Contacted Yet",        e:"May 16, 2026", c:"",             t:"Native form"},
-  {n:"Doel Santiago",         s:"Not Contacted Yet",        e:"May 16, 2026", c:"",             t:"Native form"},
-  {n:"Mayra I. Ayala",        s:"Inventory Not Available",  e:"May 16, 2026", c:"May 18, 2026", t:"Native form"},
-  {n:"Raul Rene Hernandez",   s:"Follow Up Scheduled",      e:"May 17, 2026", c:"",             t:"Native form"},
-  {n:"Luis E. Quintero",      s:"Contact With No Answer",   e:"May 28, 2026", c:"May 29, 2026", t:"Native form"},
-  {n:"Carmen Rosario",        s:"Contact With No Answer",   e:"May 28, 2026", c:"May 29, 2026", t:"Dm's"},
-  {n:"Lopez Madelaine",       s:"Pre-Qualification Started",e:"May 29, 2026", c:"May 29, 2026", t:"Native form"},
-  {n:"César Casul Rivera",    s:"Appointment Scheduled",    e:"May 16, 2026", c:"May 18, 2026", t:"Native form"},
-  {n:"Nehe Ga - Ro",          s:"Contact With No Answer",   e:"May 28, 2026", c:"June 2, 2026",  t:"Dm's"},
-  {n:"Francisco J. Cedeno",   s:"Follow Up Scheduled",      e:"May 27, 2026", c:"May 27, 2026", t:"Native form"},
-  {n:"Edward Jr Morales",     s:"Not Interested",           e:"May 27, 2026", c:"May 27, 2026", t:"Native form"},
-  {n:"Gadiel Pagán",          s:"Contact With No Answer",   e:"May 27, 2026", c:"May 27, 2026", t:"Dm's"},
-  {n:"Jeremy",                s:"Not Contacted Yet",        e:"May 28, 2026", c:"May 28, 2026", t:"Native form"},
-  {n:"Nelliam Colón Colón",   s:"Contact With No Answer",   e:"May 27, 2026", c:"May 27, 2026", t:"Native form"},
-  {n:"Annette Molina Molina", s:"Contact With No Answer",   e:"May 27, 2026", c:"June 1, 2026",  t:"Native form"},
-  {n:"Roberto Torres",        s:"Not Interested",           e:"May 23, 2026", c:"May 23, 2026", t:"Native form"},
-  {n:"Julio Soria Diaz",      s:"Not Interested",           e:"May 23, 2026", c:"May 23, 2026", t:"Native form"},
-  {n:"Ruben Lalito Davila",   s:"Contact With No Answer",   e:"May 21, 2026", c:"May 25, 2026", t:"Native form"},
-  {n:"Hector Ortiz",          s:"Contact With No Answer",   e:"May 21, 2026", c:"May 25, 2026", t:"Native form"},
-  {n:"Rigoberto Soto",        s:"Contact With No Answer",   e:"May 23, 2026", c:"May 25, 2026", t:"Native form"},
-  {n:"Gian Cordero",          s:"Pre-Qualification Started",e:"May 24, 2026", c:"May 25, 2026", t:"Native form"},
-  {n:"Yarielis Gonzalez",     s:"Not Interested",           e:"May 24, 2026", c:"May 25, 2026", t:"Native form"},
-  {n:"Wilfred Ruiz",          s:"Follow Up Scheduled",      e:"May 24, 2026", c:"May 25, 2026", t:"Native form"},
-  {n:"Edgardo Heredia Pacheco",s:"Not Contacted Yet",       e:"May 21, 2026", c:"",             t:"Native form"},
-  {n:"Julio Barrera",         s:"Follow Up Scheduled",      e:"May 20, 2026", c:"May 21, 2026", t:"Native form"},
-  {n:"Manuel Rivera",         s:"Appointment Scheduled",    e:"May 19, 2026", c:"May 19, 2026", t:"Native form"},
-  {n:"Reybin Jose",           s:"Follow Up Scheduled",      e:"May 16, 2026", c:"May 18, 2026", t:"Native form"},
-  {n:"Suriel Plaza Mojica",   s:"Follow Up Scheduled",      e:"May 18, 2026", c:"May 18, 2026", t:"Native form"},
-  {n:"Melvin Gonzalez",       s:"Contact With No Answer",   e:"May 16, 2026", c:"May 18, 2026", t:"Native form"},
-  {n:"Daynalee Gascot",       s:"Follow Up Scheduled",      e:"May 18, 2026", c:"May 18, 2026", t:"Native form"},
-  {n:"Philip D Hopgood",      s:"Not Contacted Yet",        e:"May 29, 2026", c:"",             t:"Dm's"},
-  {n:"Julio Barrera",         s:"Contact With No Answer",   e:"May 29, 2026", c:"May 29, 2026", t:"Dm's"},
-  {n:"Nancy Torres",          s:"Not Contacted Yet",        e:"May 30, 2026", c:"",             t:"Dm's"},
-  {n:"Daisy Cruz",            s:"Contact With No Answer",   e:"May 30, 2026", c:"May 30, 2026", t:"Dm's"},
-  {n:"Leilani Cintron",       s:"Contact With No Answer",   e:"May 30, 2026", c:"May 30, 2026", t:"Dm's"},
-  {n:"Maximo Amado",          s:"Contact With No Answer",   e:"May 30, 2026", c:"May 30, 2026", t:"Dm's"},
-  {n:"Hector Carrion",        s:"Not Contacted Yet",        e:"May 30, 2026", c:"",             t:"Dm's"},
-  {n:"Luis Ángel",            s:"Not Contacted Yet",        e:"May 31, 2026", c:"",             t:"Dm's"},
-  {n:"Roberto Ayala",         s:"Contact With No Answer",   e:"May 30, 2026", c:"May 31, 2026", t:"Native form"},
-  {n:"Pablo Burgos",          s:"Contact With No Answer",   e:"May 31, 2026", c:"May 31, 2026", t:"Dm's"},
-  {n:"Javier Cotto",          s:"Contact With No Answer",   e:"May 31, 2026", c:"May 31, 2026", t:"Dm's"},
+  // ── MAYO ────────────────────────────────────────────────────────────────
+  {n:"Jossean Roman",             s:"Not Contacted Yet",        e:"May 16, 2026", c:"",             t:"Native form"},
+  {n:"Doel Santiago",             s:"Not Contacted Yet",        e:"May 16, 2026", c:"",             t:"Native form"},
+  {n:"Mayra I. Ayala",            s:"Inventory Not Available",  e:"May 16, 2026", c:"May 18, 2026", t:"Native form"},
+  {n:"Raul Rene Hernandez",       s:"Follow Up Scheduled",      e:"May 17, 2026", c:"",             t:"Native form"},
+  {n:"Luis E. Quintero",          s:"Contact With No Answer",   e:"May 28, 2026", c:"May 29, 2026", t:"Native form"},
+  {n:"Carmen Rosario",            s:"Contact With No Answer",   e:"May 28, 2026", c:"May 29, 2026", t:"Dm's"},
+  {n:"Lopez Madelaine",           s:"Pre-Qualification Started",e:"May 29, 2026", c:"May 29, 2026", t:"Native form"},
+  {n:"César Casul Rivera",        s:"Appointment Scheduled",    e:"May 16, 2026", c:"May 18, 2026", t:"Native form"},
+  {n:"Nehe Ga - Ro",              s:"Contact With No Answer",   e:"May 28, 2026", c:"June 2, 2026",  t:"Dm's"},
+  {n:"Francisco J. Cedeno",       s:"Follow Up Scheduled",      e:"May 27, 2026", c:"May 27, 2026", t:"Native form"},
+  {n:"Edward Jr Morales",         s:"Not Interested",           e:"May 27, 2026", c:"May 27, 2026", t:"Native form"},
+  {n:"Gadiel Pagán",              s:"Contact With No Answer",   e:"May 27, 2026", c:"May 27, 2026", t:"Dm's"},
+  {n:"Jeremy",                    s:"Not Contacted Yet",        e:"May 28, 2026", c:"",             t:"Native form"},
+  {n:"Nelliam Colón Colón",       s:"Contact With No Answer",   e:"May 27, 2026", c:"May 27, 2026", t:"Native form"},
+  {n:"Annette Molina Molina",     s:"Contact With No Answer",   e:"May 27, 2026", c:"June 1, 2026",  t:"Native form"},
+  {n:"Roberto Torres",            s:"Not Interested",           e:"May 23, 2026", c:"May 23, 2026", t:"Native form"},
+  {n:"Julio Soria Diaz",          s:"Not Interested",           e:"May 23, 2026", c:"May 23, 2026", t:"Native form"},
+  {n:"Ruben Lalito Davila",       s:"Contact With No Answer",   e:"May 21, 2026", c:"May 25, 2026", t:"Native form"},
+  {n:"Hector Ortiz",              s:"Contact With No Answer",   e:"May 21, 2026", c:"May 25, 2026", t:"Native form"},
+  {n:"Rigoberto Soto",            s:"Contact With No Answer",   e:"May 23, 2026", c:"May 25, 2026", t:"Native form"},
+  {n:"Gian Cordero",              s:"Pre-Qualification Started",e:"May 24, 2026", c:"May 25, 2026", t:"Native form"},
+  {n:"Yarielis Gonzalez",         s:"Not Interested",           e:"May 24, 2026", c:"May 25, 2026", t:"Native form"},
+  {n:"Wilfred Ruiz",              s:"Follow Up Scheduled",      e:"May 24, 2026", c:"May 25, 2026", t:"Native form"},
+  {n:"Edgardo Heredia Pacheco",   s:"Not Contacted Yet",        e:"May 21, 2026", c:"",             t:"Native form"},
+  {n:"Julio Barrera",             s:"Follow Up Scheduled",      e:"May 20, 2026", c:"May 21, 2026", t:"Native form"},
+  {n:"Manuel Rivera",             s:"Appointment Scheduled",    e:"May 19, 2026", c:"May 19, 2026", t:"Native form"},
+  {n:"Reybin Jose",               s:"Follow Up Scheduled",      e:"May 16, 2026", c:"May 18, 2026", t:"Native form"},
+  {n:"Suriel Plaza Mojica",       s:"Follow Up Scheduled",      e:"May 18, 2026", c:"May 18, 2026", t:"Native form"},
+  {n:"Melvin Gonzalez",           s:"Contact With No Answer",   e:"May 16, 2026", c:"May 18, 2026", t:"Native form"},
+  {n:"Daynalee Gascot",           s:"Follow Up Scheduled",      e:"May 18, 2026", c:"May 18, 2026", t:"Native form"},
+  {n:"Philip D Hopgood",          s:"Not Contacted Yet",        e:"May 29, 2026", c:"",             t:"Dm's"},
+  {n:"Julio Barrera (DM)",        s:"Contact With No Answer",   e:"May 29, 2026", c:"May 29, 2026", t:"Dm's"},
+  {n:"Nancy Torres",              s:"Not Contacted Yet",        e:"May 30, 2026", c:"",             t:"Dm's"},
+  {n:"Daisy Cruz",                s:"Contact With No Answer",   e:"May 30, 2026", c:"May 30, 2026", t:"Dm's"},
+  {n:"Leilani Cintron",           s:"Contact With No Answer",   e:"May 30, 2026", c:"May 30, 2026", t:"Dm's"},
+  {n:"Maximo Amado",              s:"Contact With No Answer",   e:"May 30, 2026", c:"May 30, 2026", t:"Dm's"},
+  {n:"Hector Carrion",            s:"Not Contacted Yet",        e:"May 30, 2026", c:"",             t:"Dm's"},
+  {n:"Luis Ángel",                s:"Not Contacted Yet",        e:"May 31, 2026", c:"",             t:"Dm's"},
+  {n:"Roberto Ayala",             s:"Contact With No Answer",   e:"May 30, 2026", c:"May 31, 2026", t:"Native form"},
+  {n:"Pablo Burgos",              s:"Contact With No Answer",   e:"May 31, 2026", c:"May 31, 2026", t:"Dm's"},
+  {n:"Javier Cotto",              s:"Contact With No Answer",   e:"May 31, 2026", c:"May 31, 2026", t:"Dm's"},
+  // ── JUNIO ───────────────────────────────────────────────────────────────
+  {n:"William Garcia Montanez",   s:"Contact With No Answer",   e:"June 1, 2026",  c:"June 1, 2026",  t:"Dm's"},
+  {n:"Pedro Burgos",              s:"Contact With No Answer",   e:"June 1, 2026",  c:"June 1, 2026",  t:"Dm's"},
+  {n:"Orlando Matos Matos",       s:"Follow Up Scheduled",      e:"June 1, 2026",  c:"June 2, 2026",  t:"Native form"},
+  {n:"Nelson Llaurador",          s:"Contact With No Answer",   e:"June 1, 2026",  c:"June 1, 2026",  t:"Dm's"},
+  {n:"Jose Hernandez",            s:"Contact With No Answer",   e:"June 1, 2026",  c:"June 1, 2026",  t:"Dm's"},
+  {n:"Rafael Padilla Vega",       s:"Disqualified",             e:"June 2, 2026",  c:"June 2, 2026",  t:"Native form"},
+  {n:"Luis Caraballo",            s:"Contact With No Answer",   e:"June 1, 2026",  c:"June 1, 2026",  t:"Dm's"},
+  {n:"Milly Rivera",              s:"Follow Up Scheduled",      e:"June 2, 2026",  c:"June 2, 2026",  t:"Dm's"},
+  {n:"Efrain Irizarry",           s:"Contact With No Answer",   e:"June 2, 2026",  c:"June 2, 2026",  t:"Dm's"},
+  {n:"Kenneth Román",             s:"Contact With No Answer",   e:"June 2, 2026",  c:"June 2, 2026",  t:"Dm's"},
+  {n:"Carlos Guzmán",             s:"Contact With No Answer",   e:"June 2, 2026",  c:"June 2, 2026",  t:"Dm's"},
+  {n:"Angel Luis Gonzalez Pedraza",s:"Follow Up Scheduled",     e:"June 2, 2026",  c:"June 2, 2026",  t:"Dm's"},
+  {n:"Carolina Rvra",             s:"Follow Up Scheduled",      e:"June 2, 2026",  c:"June 2, 2026",  t:"Dm's"},
+  {n:"Alberto Rivera",            s:"Contact With No Answer",   e:"June 2, 2026",  c:"June 2, 2026",  t:"Dm's"},
+  {n:"Juan Lopez",                s:"Contact With No Answer",   e:"June 2, 2026",  c:"June 2, 2026",  t:"Dm's"},
+  {n:"Leonel Santiago Santiago",  s:"Contact With No Answer",   e:"June 2, 2026",  c:"June 2, 2026",  t:"Native form"},
+  {n:"Yomar Lopez Melendez",      s:"Contact With No Answer",   e:"June 2, 2026",  c:"June 2, 2026",  t:"Dm's"},
+  {n:"Haydee Piris",              s:"Contact With No Answer",   e:"June 2, 2026",  c:"June 2, 2026",  t:"Dm's"},
+  {n:"Carlos Soler Lugo",         s:"Contact With No Answer",   e:"June 3, 2026",  c:"June 3, 2026",  t:"Dm's"},
+  {n:"Elvin Garcia",              s:"Contact With No Answer",   e:"June 2, 2026",  c:"June 2, 2026",  t:"Dm's"},
+  {n:"Humberto Mosquea Mosquea",  s:"Contact With No Answer",   e:"June 2, 2026",  c:"June 2, 2026",  t:"Dm's"},
+  {n:"Jeanneth Marr",             s:"Contact With No Answer",   e:"June 3, 2026",  c:"June 3, 2026",  t:"Dm's"},
+  {n:"Carlos Ruben Vega Vega",    s:"Contact With No Answer",   e:"June 3, 2026",  c:"June 3, 2026",  t:"Dm's"},
+  {n:"Luis Garcia Besil",         s:"Contact With No Answer",   e:"June 4, 2026",  c:"June 4, 2026",  t:"Dm's"},
+  {n:"Valery Cosme",              s:"Contact With No Answer",   e:"June 3, 2026",  c:"June 3, 2026",  t:"Dm's"},
+  {n:"Sonai Roian Roian",         s:"Follow Up Scheduled",      e:"June 4, 2026",  c:"June 4, 2026",  t:"Dm's"},
+  {n:"Javier Mendez",             s:"Not Interested",           e:"June 3, 2026",  c:"June 2, 2026",  t:"Dm's"},
+  {n:"Madeline Leon Leon",        s:"Follow Up Scheduled",      e:"June 1, 2026",  c:"June 2, 2026",  t:"Dm's"},
+  {n:"Fonseca Freddy",            s:"Contact With No Answer",   e:"June 4, 2026",  c:"June 4, 2026",  t:"Dm's"},
+  {n:"Yolanda Torres",            s:"Contact With No Answer",   e:"June 5, 2026",  c:"June 5, 2026",  t:"Dm's"},
+  {n:"Yellika Ramos Sostre",      s:"Follow Up Scheduled",      e:"June 4, 2026",  c:"June 4, 2026",  t:"Dm's"},
+  {n:"Wilfredo Vega",             s:"Contact With No Answer",   e:"June 4, 2026",  c:"June 4, 2026",  t:"Dm's"},
+  {n:"Carlos A. Otero Rivera",    s:"Contact With No Answer",   e:"June 5, 2026",  c:"June 5, 2026",  t:"Dm's"},
+  {n:"Santos Relles",             s:"Not Contacted Yet",        e:"June 5, 2026",  c:"",              t:""},
+  {n:"Julio Ángel Cordero Rivera",s:"Disqualified",             e:"June 5, 2026",  c:"June 5, 2026",  t:"Dm's"},
+  {n:"Exell Cruz",                s:"Contact With No Answer",   e:"June 5, 2026",  c:"June 5, 2026",  t:"Dm's"},
+  {n:"Daniel Rivera Rivera",      s:"Follow Up Scheduled",      e:"June 5, 2026",  c:"June 5, 2026",  t:"Dm's"},
+  {n:"Hector Julbe",              s:"Contact With No Answer",   e:"June 6, 2026",  c:"June 6, 2026",  t:"Dm's"},
+  {n:"Marcial Ruiz Santiago",     s:"Contact With No Answer",   e:"June 6, 2026",  c:"June 8, 2026",  t:"Dm's"},
+  {n:"Loza Miranda",              s:"Contact With No Answer",   e:"June 5, 2026",  c:"June 6, 2026",  t:"Dm's"},
+  {n:"Anthony Figueroa Felix",    s:"Contact With No Answer",   e:"June 6, 2026",  c:"June 6, 2026",  t:"Dm's"},
+  {n:"Mayely Nayrym Ojeda",       s:"Follow Up Scheduled",      e:"June 7, 2026",  c:"June 7, 2026",  t:"Native form"},
+  {n:"Andrea Aparicio Bertrán",   s:"Contact With No Answer",   e:"June 3, 2026",  c:"June 3, 2026",  t:"Native form"},
+  {n:"Elvin Martinez",            s:"Not Contacted Yet",        e:"June 7, 2026",  c:"",              t:""},
+  {n:"Anahis",                    s:"Contact With No Answer",   e:"June 7, 2026",  c:"June 7, 2026",  t:"Native form"},
+  {n:"Abimelec Figueroa",         s:"Contact With No Answer",   e:"June 8, 2026",  c:"June 8, 2026",  t:"Dm's"},
+  {n:"Maria Escalera",            s:"Follow Up Scheduled",      e:"June 4, 2026",  c:"June 4, 2026",  t:"Dm's"},
+  {n:"Carmen Ramirez",            s:"Contact With No Answer",   e:"June 8, 2026",  c:"June 8, 2026",  t:"Dm's"},
+  {n:"Burgos Cruz Margarita",     s:"Follow Up Scheduled",      e:"June 8, 2026",  c:"June 9, 2026",  t:"Dm's"},
+  {n:"Alondra Del Mar",           s:"Follow Up Scheduled",      e:"June 9, 2026",  c:"June 9, 2026",  t:"Native form"},
+  {n:"Gilbert J Lopez Delgado",   s:"Follow Up Scheduled",      e:"June 9, 2026",  c:"June 9, 2026",  t:"Native form"},
+  {n:"Severo Ayala",              s:"Not Contacted Yet",        e:"June 9, 2026",  c:"",              t:"Dm's"},
+  {n:"Joel Ramos",                s:"Not Contacted Yet",        e:"June 10, 2026", c:"",              t:"Native form"},
+  {n:"Edda González-maldonado",   s:"Contact With No Answer",   e:"June 9, 2026",  c:"June 10, 2026", t:"Dm's"},
+  {n:"Felicita Santiago Ayala",   s:"Contact With No Answer",   e:"June 10, 2026", c:"June 10, 2026", t:"Dm's"},
+  {n:"Claudio J. Rivera",         s:"Contact With No Answer",   e:"June 13, 2026", c:"June 13, 2026", t:"Dm's"},
+  {n:"Joel Galarza",              s:"Follow Up Scheduled",      e:"June 12, 2026", c:"June 12, 2026", t:"Native form"},
+  {n:"Santiago Velazquez",        s:"Contact With No Answer",   e:"June 10, 2026", c:"June 11, 2026", t:"Dm's"},
+  {n:"Maria Sanchez",             s:"Not Contacted Yet",        e:"June 10, 2026", c:"",              t:"Dm's"},
+  {n:"Alfonso Sacarello",         s:"Follow Up Scheduled",      e:"June 11, 2026", c:"June 11, 2026", t:"Native form"},
+  {n:"Elbira Rivera",             s:"Contact With No Answer",   e:"June 13, 2026", c:"June 13, 2026", t:"Dm's"},
+  {n:"Au Cama",                   s:"Contact With No Answer",   e:"June 13, 2026", c:"June 13, 2026", t:"Dm's"},
+  {n:"Francisco Javier Lopez Silva",s:"Follow Up Scheduled",    e:"June 13, 2026", c:"June 13, 2026", t:"Native form"},
+  {n:"Haydee Gotay",              s:"Follow Up Scheduled",      e:"June 13, 2026", c:"June 13, 2026", t:"Dm's"},
+  {n:"Carlos Gandia Vassallo",    s:"Contact With No Answer",   e:"June 12, 2026", c:"June 13, 2026", t:"Dm's"},
+  {n:"Fernando Gonzalez",         s:"Contact With No Answer",   e:"June 13, 2026", c:"June 13, 2026", t:"Native form"},
+  {n:"William Torres Monte",      s:"Contact With No Answer",   e:"June 14, 2026", c:"June 14, 2026", t:"Native form"},
+  {n:"Hector Cruz Aviles",        s:"Follow Up Scheduled",      e:"June 14, 2026", c:"June 15, 2026", t:"Native form"},
+  {n:"Ahmed Molina",              s:"Contact With No Answer",   e:"June 14, 2026", c:"June 14, 2026", t:"Dm's"},
+  {n:"Alvin N. Irizarry",         s:"Contact With No Answer",   e:"June 15, 2026", c:"June 15, 2026", t:"Native form"},
+  {n:"Abigail Marcano",           s:"Contact With No Answer",   e:"June 16, 2026", c:"June 16, 2026", t:"Dm's"},
+  {n:"Nancy M Torres Berrios",    s:"Pre-Qualification Started",e:"June 15, 2026", c:"June 15, 2026", t:"Native form"},
+  {n:"Evangeline Rivera",         s:"Contact With No Answer",   e:"June 15, 2026", c:"June 15, 2026", t:"Native form"},
+  {n:"Nilda García",              s:"Contact With No Answer",   e:"June 15, 2026", c:"June 15, 2026", t:"Dm's"},
+  {n:"Yeira Rodriguez",           s:"Follow Up Scheduled",      e:"June 11, 2026", c:"June 12, 2026", t:"Native form"},
+  {n:"Roberto Font",              s:"Contact With No Answer",   e:"June 16, 2026", c:"June 16, 2026", t:"Dm's"},
+  {n:"Orlando Perez",             s:"Follow Up Scheduled",      e:"June 17, 2026", c:"June 17, 2026", t:"Native form"},
+  {n:"Olga Feliciano",            s:"Contact With No Answer",   e:"June 16, 2026", c:"June 16, 2026", t:"Dm's"},
+  {n:"Kiara Angelie Collazo",     s:"Not Interested",           e:"June 16, 2026", c:"June 16, 2026", t:"Native form"},
+  {n:"Veronica de jesus",         s:"Not Interested",           e:"June 16, 2026", c:"June 16, 2026", t:"Dm's"},
+  {n:"Tata Menendez",             s:"Contact With No Answer",   e:"June 16, 2026", c:"June 16, 2026", t:"Dm's"},
+  {n:"Tolin Muniz5",              s:"Not Contacted Yet",        e:"June 17, 2026", c:"",              t:"Native form"},
+  {n:"Eliezer Ortiz Grant",       s:"Disqualified",             e:"June 18, 2026", c:"June 18, 2026", t:"Native form"},
+  {n:"Antonia Rivera",            s:"Not Interested",           e:"June 17, 2026", c:"June 18, 2026", t:"Native form"},
+  {n:"Celeste Aquino",            s:"Contact With No Answer",   e:"June 17, 2026", c:"June 17, 2026", t:"Native form"},
+  {n:"Tolin Muniz",               s:"Not Interested",           e:"June 17, 2026", c:"June 17, 2026", t:"Native form"},
+  {n:"Marggie Lp",                s:"Contact With No Answer",   e:"June 18, 2026", c:"June 18, 2026", t:"Native form"},
+  {n:"Ki9 i9oi",                  s:"Contact With No Answer",   e:"June 18, 2026", c:"June 18, 2026", t:"Native form"},
+  {n:"Victor",                    s:"Follow Up Scheduled",      e:"June 17, 2026", c:"June 17, 2026", t:"Native form"},
+  {n:"Wilfredo Fernández Rodriguez",s:"Follow Up Scheduled",    e:"June 18, 2026", c:"June 18, 2026", t:"Native form"},
+  {n:"Sheila Suarez",             s:"Follow Up Scheduled",      e:"June 18, 2026", c:"June 18, 2026", t:"Dm's"},
+  {n:"Jose Rivas",                s:"Not Contacted Yet",        e:"June 18, 2026", c:"",              t:"Native form"},
+  {n:"Julimar Rivera Maldonado",  s:"Contact With No Answer",   e:"June 18, 2026", c:"June 18, 2026", t:"Native form"},
+  {n:"Jose Rosado",               s:"Not Interested",           e:"June 19, 2026", c:"June 19, 2026", t:"Native form"},
+  {n:"Renesiitto Burgos",         s:"Follow Up Scheduled",      e:"June 19, 2026", c:"June 19, 2026", t:"Native form"},
+  {n:"Raful Rodriguez",           s:"Contact With No Answer",   e:"June 19, 2026", c:"June 19, 2026", t:"Native form"},
+  {n:"Ruben Vega Andujar",        s:"Contact With No Answer",   e:"June 19, 2026", c:"June 19, 2026", t:"Native form"},
+  {n:"Raful Rodriguez (2)",       s:"Not Interested",           e:"June 19, 2026", c:"June 19, 2026", t:"Native form"},
+  {n:"Dulce Olmo",                s:"Contact With No Answer",   e:"June 20, 2026", c:"June 20, 2026", t:"Native form"},
+  {n:"Yayo Quiles",               s:"Contact With No Answer",   e:"June 19, 2026", c:"June 19, 2026", t:"Dm's"},
+  {n:"Tona Hernandez",            s:"Follow Up Scheduled",      e:"June 20, 2026", c:"June 20, 2026", t:"Native form"},
+  {n:"Solymar Adorno Valedon",    s:"Contact With No Answer",   e:"June 19, 2026", c:"June 20, 2026", t:"Native form"},
+  {n:"Isaias Sanchez Rosa",       s:"Not Interested",           e:"June 19, 2026", c:"June 20, 2026", t:"Native form"},
+  {n:"Yavier Santos",             s:"Not Interested",           e:"June 20, 2026", c:"June 20, 2026", t:"Native form"},
+  {n:"Israel Martinez",           s:"Contact With No Answer",   e:"June 21, 2026", c:"June 22, 2026", t:"Native form"},
+  {n:"NRichie Román",             s:"Contact With No Answer",   e:"June 21, 2026", c:"June 22, 2026", t:"Native form"},
+  {n:"Carlos Herrera",            s:"Contact With No Answer",   e:"June 20, 2026", c:"June 20, 2026", t:"Native form"},
+  {n:"Modesta Sanchez",           s:"Not Contacted Yet",        e:"June 21, 2026", c:"",              t:"Native form"},
+  {n:"Margarita Lozada",          s:"Contact With No Answer",   e:"June 21, 2026", c:"June 21, 2026", t:"Native form"},
+  {n:"Nilda Rodrguez Rosado",     s:"Contact With No Answer",   e:"June 20, 2026", c:"June 21, 2026", t:"Native form"},
+  {n:"William J Quiñones",        s:"Contact With No Answer",   e:"June 21, 2026", c:"June 21, 2026", t:"Native form"},
+  {n:"Irene Ortiz",               s:"Contact With No Answer",   e:"June 21, 2026", c:"June 21, 2026", t:"Native form"},
+  {n:"Veneno S Toy S Berrios",    s:"Not Contacted Yet",        e:"June 22, 2026", c:"",              t:"Native form"},
+  {n:"Mare Ortiz",                s:"Contact With No Answer",   e:"June 22, 2026", c:"June 22, 2026", t:"Native form"},
+  {n:"Mercedes Calderon",         s:"Contact With No Answer",   e:"June 21, 2026", c:"June 21, 2026", t:"Native form"},
+  {n:"Juan Santana",              s:"Not Contacted Yet",        e:"June 22, 2026", c:"",              t:"Native form"},
+  {n:"Luis R Martinez",           s:"Contact With No Answer",   e:"June 22, 2026", c:"June 22, 2026", t:"Native form"},
+  {n:"María Angélica Ortiz",      s:"Contact With No Answer",   e:"June 22, 2026", c:"June 23, 2026", t:"Native form"},
+  {n:"Juan Santana (FUS)",        s:"Follow Up Scheduled",      e:"June 22, 2026", c:"June 22, 2026", t:"Native form"},
+  {n:"Fernando Diaz",             s:"Not Interested",           e:"June 22, 2026", c:"June 22, 2026", t:"Native form"},
 ];
 
 // ── TABLA ─────────────────────────────────────────────────────────────────────
@@ -451,26 +628,28 @@ const ACTION_STATUSES = ["Contact With No Answer","Follow Up Scheduled"];
 
 function statusClass(s) {
   const m = {
-    "Contact With No Answer":"status-cwna",
-    "Follow Up Scheduled":"status-fus",
-    "Appointment Scheduled":"status-apt",
-    "Not Interested":"status-ni",
+    "Contact With No Answer":  "status-cwna",
+    "Follow Up Scheduled":     "status-fus",
+    "Appointment Scheduled":   "status-apt",
+    "Not Interested":          "status-ni",
     "Pre-Qualification Started":"status-pqs",
-    "Not Contacted Yet":"status-ncy",
-    "Inventory Not Available":"status-ina",
+    "Not Contacted Yet":       "status-ncy",
+    "Inventory Not Available": "status-ina",
+    "Disqualified":            "status-dq",
   };
   return m[s] || "status-ni";
 }
 
 function statusLabel(s) {
   const m = {
-    "Contact With No Answer":"Sin Respuesta",
-    "Follow Up Scheduled":"Follow Up",
-    "Appointment Scheduled":"Cita Agendada",
-    "Not Interested":"No Interesado",
+    "Contact With No Answer":   "Sin Respuesta",
+    "Follow Up Scheduled":      "Follow Up",
+    "Appointment Scheduled":    "Cita Agendada",
+    "Not Interested":           "No Interesado",
     "Pre-Qualification Started":"Pre-Calificado",
-    "Not Contacted Yet":"Sin Contactar",
-    "Inventory Not Available":"Inventario N/D",
+    "Not Contacted Yet":        "Sin Contactar",
+    "Inventory Not Available":  "Inventario N/D",
+    "Disqualified":             "Descalificado",
   };
   return m[s] || s;
 }
@@ -485,7 +664,7 @@ function renderTable(data) {
       <td style="color:#999;font-size:12px">${i+1}</td>
       <td style="font-weight:600">${r.n}</td>
       <td><span class="status-badge ${statusClass(r.s)}">${statusLabel(r.s)}</span></td>
-      <td><span class="origin-badge ${r.t==="Dm's"?'origin-dm':'origin-nf'}">${r.t==="Dm's"?"DM's":"Native Form"}</span></td>
+      <td><span class="origin-badge ${r.t==="Dm's"?'origin-dm':'origin-nf'}">${r.t==="Dm's"?"DM's":r.t||"—"}</span></td>
       <td style="font-size:12px;color:#4B4B4B">${r.e}</td>
       <td style="font-size:12px;color:#8C8C8C">${r.c||'—'}</td>
     </tr>`).join('');
@@ -512,24 +691,22 @@ renderTable(leads);
 
 // ── CHARTS ─────────────────────────────────────────────────────────────────────
 
-// Chart 1: Leads por semana
+// Chart 1: Leads por semana (6 semanas)
 new Chart(document.getElementById('chartSemanas'), {
   type: 'bar',
   data: {
-    labels: ['May 16–18', 'May 19–25', 'May 27–29', 'May 30–31'],
+    labels: ['May 16–18','May 19–25','May 26–31','Jun 1–7','Jun 8–14','Jun 15–22'],
     datasets: [{
       label: 'Leads',
-      data: [9, 11, 12, 9],
-      backgroundColor: [BLUE, BLUE, '#8B0000', BLUE],
+      data: [9, 11, 21, 46, 24, 50],
+      backgroundColor: [BLUE, BLUE, BLUE, '#8B0000', BLUE, '#7C1C1C'],
       borderRadius: 6,
     }]
   },
   options: {
     responsive: true, maintainAspectRatio: false,
-    plugins: {
-      legend: { display: false },
-      tooltip: { callbacks: { label: ctx => ctx.parsed.y + ' leads' } }
-    },
+    plugins: { legend: { display: false },
+      tooltip: { callbacks: { label: ctx => ctx.parsed.y + ' leads' } } },
     scales: {
       y: { beginAtZero: true, grid: { color: '#F0F0F0' } },
       x: { grid: { display: false } }
@@ -541,10 +718,10 @@ new Chart(document.getElementById('chartSemanas'), {
 new Chart(document.getElementById('chartOrigen'), {
   type: 'doughnut',
   data: {
-    labels: ['Formulario Nativo', "DM's"],
+    labels: ['Formulario Nativo', "DM's", 'Sin origen'],
     datasets: [{
-      data: [28, 13],
-      backgroundColor: [BLUE, '#60A5FA'],
+      data: [86, 73, 2],
+      backgroundColor: [BLUE, '#60A5FA', '#D1D5DB'],
       borderWidth: 0,
     }]
   },
@@ -559,20 +736,18 @@ new Chart(document.getElementById('chartOrigen'), {
 new Chart(document.getElementById('chartEstatus'), {
   type: 'bar',
   data: {
-    labels: ['Sin Respuesta','Sin Contactar','Follow Up','No Interesado','Pre-Calificado','Cita Agendada','Inventario N/D'],
+    labels: ['Sin Respuesta','Follow Up','Sin Contactar','No Interesado','Pre-Calificado','Cita Agendada','Descalificado','Inventario N/D'],
     datasets: [{
-      data: [17, 8, 7, 4, 2, 2, 1],
-      backgroundColor: ['#F59E0B','#F43F5E','#3B82F6','#9CA3AF','#8B5CF6','#10B981','#93C5FD'],
+      data: [87, 33, 18, 14, 3, 2, 3, 1],
+      backgroundColor: ['#F59E0B','#3B82F6','#F43F5E','#9CA3AF','#8B5CF6','#10B981','#EA580C','#93C5FD'],
       borderRadius: 6,
     }]
   },
   options: {
     indexAxis: 'y',
     responsive: true, maintainAspectRatio: false,
-    plugins: {
-      legend: { display: false },
-      tooltip: { callbacks: { label: ctx => ctx.parsed.x + ' leads' } }
-    },
+    plugins: { legend: { display: false },
+      tooltip: { callbacks: { label: ctx => ctx.parsed.x + ' leads' } } },
     scales: {
       x: { beginAtZero: true, grid: { color: '#F0F0F0' } },
       y: { grid: { display: false } }
@@ -580,19 +755,20 @@ new Chart(document.getElementById('chartEstatus'), {
   }
 });
 
-// Chart 4: Desglose por semana (stacked bar)
+// Chart 4: Desglose por semana (stacked bar — 6 semanas)
 new Chart(document.getElementById('chartDesglose'), {
   type: 'bar',
   data: {
-    labels: ['May 16–18', 'May 19–25', 'May 27–29', 'May 30–31'],
+    labels: ['May 16–18','May 19–25','May 26–31','Jun 1–7','Jun 8–14','Jun 15–22'],
     datasets: [
-      { label: 'Sin Respuesta',   data: [1,3,7,6], backgroundColor: '#F59E0B', borderRadius: 2 },
-      { label: 'Sin Contactar',   data: [2,1,2,3], backgroundColor: '#F43F5E', borderRadius: 2 },
-      { label: 'Follow Up',       data: [4,2,1,0], backgroundColor: '#3B82F6', borderRadius: 2 },
-      { label: 'No Interesado',   data: [0,3,1,0], backgroundColor: '#9CA3AF', borderRadius: 2 },
-      { label: 'Pre-Calificado',  data: [0,1,1,0], backgroundColor: '#8B5CF6', borderRadius: 2 },
-      { label: 'Cita Agendada',   data: [1,1,0,0], backgroundColor: '#10B981', borderRadius: 2 },
-      { label: 'Inventario N/D',  data: [1,0,0,0], backgroundColor: '#93C5FD', borderRadius: 2 },
+      { label: 'Sin Respuesta',  data: [1,3,13,31,12,27], backgroundColor: '#F59E0B', borderRadius: 2 },
+      { label: 'Sin Contactar',  data: [2,1,5,2,3,5],    backgroundColor: '#F43F5E', borderRadius: 2 },
+      { label: 'Follow Up',      data: [4,2,1,10,9,7],   backgroundColor: '#3B82F6', borderRadius: 2 },
+      { label: 'No Interesado',  data: [0,3,1,1,0,9],    backgroundColor: '#9CA3AF', borderRadius: 2 },
+      { label: 'Pre-Calificado', data: [0,1,1,0,0,1],    backgroundColor: '#8B5CF6', borderRadius: 2 },
+      { label: 'Cita Agendada',  data: [1,1,0,0,0,0],    backgroundColor: '#10B981', borderRadius: 2 },
+      { label: 'Descalificado',  data: [0,0,0,2,0,1],    backgroundColor: '#EA580C', borderRadius: 2 },
+      { label: 'Inventario N/D', data: [1,0,0,0,0,0],    backgroundColor: '#93C5FD', borderRadius: 2 },
     ]
   },
   options: {
@@ -611,7 +787,7 @@ new Chart(document.getElementById('chartFunnel'), {
   data: {
     labels: ['Leads Totales', 'Contactados', 'En Pipeline', 'Avanzados (Cita+PreCal)'],
     datasets: [{
-      data: [41, 33, 25, 4],
+      data: [161, 143, 123, 5],
       backgroundColor: [BLUE, '#2563EB', '#F59E0B', '#10B981'],
       borderRadius: 6,
     }]
@@ -624,14 +800,14 @@ new Chart(document.getElementById('chartFunnel'), {
       tooltip: {
         callbacks: {
           label: ctx => {
-            const pcts = ['100%','80.5%','61%','9.8%'];
+            const pcts = ['100%','88.8%','76.4%','3.1%'];
             return ` ${ctx.parsed.x} leads (${pcts[ctx.dataIndex]})`;
           }
         }
       }
     },
     scales: {
-      x: { beginAtZero: true, max: 45, grid: { color: '#F0F0F0' } },
+      x: { beginAtZero: true, max: 175, grid: { color: '#F0F0F0' } },
       y: { grid: { display: false } }
     }
   }
