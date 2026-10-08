@@ -52,7 +52,6 @@
   .kpi-card { background: var(--white); border: 1px solid var(--silver-200); border-radius: 14px; padding: 20px; border-top: 3px solid var(--ink); box-shadow: 0 1px 2px rgba(0,0,0,0.04); }
   .kpi-label { font-size: 11px; font-weight: 700; color: var(--ink-faint); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 8px; }
   .kpi-value { font-size: 32px; font-weight: 800; color: var(--ink); line-height: 1; }
-  .sept-note { font-size: 12px; color: var(--ink-faint); margin: -28px 0 40px; }
   .month-sub { font-size: 11px; color: var(--ink-faint); margin: 0 0 10px; line-height: 1.5; }
   .kpi-sub { font-size: 12px; color: var(--ink-faint); margin-top: 6px; }
 
@@ -164,9 +163,6 @@
   <div style="margin-bottom:24px;">
     <div class="section-title">Resumen Ejecutivo</div>
     <div class="kpi-grid" id="kpiGrid"></div>
-    <div class="section-title">Gestión Comercial — Septiembre</div>
-    <div class="kpi-grid" id="septGrid"></div>
-    <div class="sept-note" id="septNote"></div>
   </div>
 
   <!-- CHARTS -->
@@ -209,19 +205,19 @@
       </details>
       <details class="accordion-item">
         <summary class="accordion-trigger">Priorizar el contacto inicial con leads nuevos</summary>
-        <div class="accordion-panel">En septiembre 275 de 620 contactos (44.4%) siguen en estatus "Nuevo", sin una primera gestión documentada; en el acumulado son 686 de 1,590 registros (43%). Se recomienda un protocolo de contacto dentro de las primeras 24 horas, empezando por la cartera de Frederick Fuentes (131 nuevos) y Eric Rivera (84).</div>
+        <div class="accordion-panel">686 de los 1,590 registros del CRM (43%) permanecen en estatus "Nuevo", es decir, sin una primera gestión documentada. Se recomienda establecer un protocolo de contacto dentro de las primeras 24 horas de ingreso para evitar que el lead pierda interés antes de recibir seguimiento.</div>
       </details>
       <details class="accordion-item">
         <summary class="accordion-trigger">Revisar los criterios de descalificación</summary>
-        <div class="accordion-panel">En septiembre 169 contactos (27.3% del total y 49.0% de los 345 gestionados) quedaron como "Descalificado"; en el acumulado son 319 (20%). Se recomienda auditar una muestra para confirmar que responde a criterios reales (fuera de mercado, sin capacidad de compra, dato inválido) y no a falta de seguimiento. Arturo Santiago (62) y Eric Rivera (42) concentran la mayoría.</div>
+        <div class="accordion-panel">El 20% de los registros del CRM (319 de 1,590) está marcado como "Descalificado". Se recomienda auditar una muestra de estos casos para confirmar que la descalificación responde a criterios reales (fuera de mercado, sin capacidad de compra, dato inválido) y no a falta de seguimiento oportuno.</div>
       </details>
       <details class="accordion-item">
         <summary class="accordion-trigger">Mantener la cadencia de seguimiento en "En Proceso"</summary>
-        <div class="accordion-panel">En septiembre 129 contactos (20.8%) están "En Proceso" y 17 "En Gestión"; sumados a Esperando Detalles (7), Cerrado-Ganado (5) y Calificado/Convertido (3) hay 161 leads calificados (26.0% del mes). Se recomienda una cadencia fija de seguimiento (cada 48–72 horas) para este grupo, el de mayor probabilidad de conversión a corto plazo. Hay además 15 leads "En Pausa" por reactivar.</div>
+        <div class="accordion-panel">263 registros (17%) se encuentran "En Proceso" y 21 "En Gestión". Se recomienda definir una cadencia de seguimiento fija (por ejemplo, cada 48–72 horas) para este grupo, el de mayor probabilidad de conversión a corto plazo, y reactivar los 15 leads "En Pausa".</div>
       </details>
       <details class="accordion-item">
-        <summary class="accordion-trigger">Replicar el proceso de los cierres de septiembre</summary>
-        <div class="accordion-panel">Septiembre cerró con 5 ventas en "Cerrado - Ganado" y 3 "Calificado/Convertido" (8 en total, 1.3% de los contactos y 5.0% de los calificados). Se recomienda documentar el proceso de esos cierres —tiempos de respuesta, número de contactos, objeciones resueltas— y usarlo como referencia para los 17 leads en gestión y los 7 en "Esperando Detalles".</div>
+        <summary class="accordion-trigger">Documentar y replicar los casos de venta cerrada</summary>
+        <div class="accordion-panel">El CRM registra 6 leads en "Cerrado - Ganado" y 3 en "Calificado / Convertido". Se recomienda documentar el proceso que llevó a esos cierres —tiempos de respuesta, número de contactos, objeciones resueltas— y usarlo como referencia de entrenamiento para el equipo de ventas.</div>
       </details>
       <details class="accordion-item">
         <summary class="accordion-trigger">Estandarizar el registro de leads capturados fuera del CRM</summary>
@@ -430,34 +426,6 @@ function renderKPIs(data) {
       <div class="kpi-value">${k.value}</div>
       <div class="kpi-sub">${k.sub}</div>
     </div>`).join('');
-  renderSeptKPIs();
-}
-
-function renderSeptKPIs() {
-  const sept = leads.filter(r => r.e.slice(0, 7) === SEPT_KEY);
-  const n = sept.length;
-  const c = f => sept.filter(r => f(r.s)).length;
-  const managed = c(s => s !== 'New');
-  const qualified = c(s => QUALIFIED_STATUSES.includes(s));
-  const unq = c(s => s === 'Unqualified');
-  const won = c(s => s === 'Closed Won');
-  const conv = c(s => s === 'Converted/Qualified');
-  const pct = (x, d) => d ? (x / d * 100).toFixed(1) + '%' : '0%';
-  const kpis = [
-    { label: 'Contactos CRM', value: n, sub: 'Septiembre 2026' },
-    { label: 'Gestionados', value: managed, sub: `${pct(managed, n)} del total (≠ Nuevo)` },
-    { label: 'Calificados', value: qualified, sub: `${pct(qualified, n)} del total · ${pct(qualified, managed)} de gestionados` },
-    { label: 'Descalificados', value: unq, sub: `${pct(unq, n)} del total · ${pct(unq, managed)} de gestionados` },
-    { label: 'Cierres / Convertidos', value: won + conv, sub: `${won} Cerrado-Ganado · ${conv} Calificado/Convertido` },
-    { label: 'Pendientes de contacto', value: c(s => s === 'New'), sub: `${pct(c(s => s === 'New'), n)} sin primera gestión` },
-  ];
-  document.getElementById('septGrid').innerHTML = kpis.map(k => `
-    <div class="kpi-card">
-      <div class="kpi-label">${k.label}</div>
-      <div class="kpi-value">${k.value}</div>
-      <div class="kpi-sub">${k.sub}</div>
-    </div>`).join('');
-  document.getElementById('septNote').textContent = 'Septiembre se calcula con los 620 contactos del CRM: el export no incluye marca, por lo que no cambia con el selector de empresa. El volumen de leads Meta (360 BM + 165 HF) proviene del Reporte Ejecutivo; la diferencia (95) corresponde a contactos de otros canales.';
 }
 
 // ================= CHARTS =================
